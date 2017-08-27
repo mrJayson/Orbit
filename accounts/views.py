@@ -1,22 +1,11 @@
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, FormView, RedirectView, UpdateView
-from .models import Account
-from .forms import SignInForm
+from django.views.generic import DetailView, UpdateView
+from django.urls import reverse_lazy
 
-class SignInView(FormView):
-    template_name = 'accounts/sign_in.html'
-    form_class = SignInForm
-    success_url = '/'
-
-class SignUpView(CreateView):
-    model = Account
-    fields = ['username','first_name','last_name']
-
-class SignOutView(RedirectView):
+class AccountEditView(LoginRequiredMixin, UpdateView):
     pass
 
-class AccountEditView(UpdateView):
-    pass
-
-class AccountDetailView(DetailView):
+class AccountDetailView(LoginRequiredMixin, DetailView):
     pass

@@ -20,5 +20,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^account/', include('accounts.urls', namespace='accounts'))
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^', include('authentication.urls', namespace='authentication')),
+    url(r'^', include('dashboard.urls', namespace='dashboard')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

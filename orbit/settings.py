@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -28,29 +27,48 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# APP CONFIGURATION
+# ------------------------------------------------------------------------------
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
 ]
 
+THIRD_PARTY_APPS = [
+
+]
+
+LOCAL_APPS = [
+    'accounts',
+    'authentication',
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+# MIDDLEWARE CONFIGURATION
+# ------------------------------------------------------------------------------
+
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+
 ]
 
 ROOT_URLCONF = 'orbit.urls'
+
+# TEMPLATE CONFIGURATION
+# ------------------------------------------------------------------------------
 
 TEMPLATES = [
     {
@@ -73,7 +91,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'orbit.wsgi.application'
 
 
-# Database
+# DATABASE CONFIGURATION
+# ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
@@ -83,6 +102,8 @@ DATABASES = {
     }
 }
 
+# ACCOUNTS / AUTHENTICATION CONFIGURATION
+# ------------------------------------------------------------------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -104,8 +125,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'accounts.Account'
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.11/topics/i18n/
+# Any authentication required pages will redirect here to authenticate
+LOGIN_URL = 'signin:signin'
+
+# The default post authentication redirect url
+LOGIN_REDIRECT_URL = 'dashboard:dashboard'
+
+# GENERAL CONFIGURATION
+# ------------------------------------------------------------------------------
 
 LANGUAGE_CODE = 'en-us'
 
@@ -117,8 +144,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
+# STATIC CONFIGURATION
+# ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
