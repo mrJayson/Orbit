@@ -1,3 +1,4 @@
+{% load static %}
 <html lang="en">
     <head>
         {% block head %}
@@ -10,6 +11,12 @@
         {% endblock meta %}
         <title>Orbit | {% block title %}{% endblock title %}</title>
         {% block stylesheets %}
+            <!-- Bootstrap -->
+            <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+            <!-- Font Awesome -->
+            <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+            <!-- Custom Theme Style -->
+            <link href="{% static 'build/css/custom.css' %}" rel="stylesheet">
         {% endblock stylesheets %}
         {% endblock head %}
     </head>
@@ -28,8 +35,14 @@
 
         {% endblock footer %}
         {% block javascripts %}
-
+            <!-- jQuery -->
+            <script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+            <!-- Bootstrap -->
+            <script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+            <!-- Custom Theme Scripts -->
+            <script src="/static/build/js/custom.js"></script>
         {% endblock javascripts %}
+
         {% endblock body %}
     </body>
 </html>
