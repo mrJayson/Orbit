@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
-from django.views.generic import CreateView, RedirectView
+from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from accounts.models import Account
@@ -27,9 +27,7 @@ class SignUpView(CreateView):
 
     # success_url = reverse_lazy('authentication:signin')
     def get_success_url(self):
-        print('doing success')
-        print(reverse_lazy('authentication:signin'))
         return reverse_lazy('authentication:signin')
 
-class SignOutView(LoginRequiredMixin, RedirectView):
-    pass
+class SignOutView(LoginRequiredMixin, LogoutView):
+    next_page = reverse_lazy('authentication:signin')
