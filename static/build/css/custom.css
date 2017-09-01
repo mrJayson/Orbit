@@ -3400,11 +3400,19 @@ ul.project_files li a i {
 a.hiddenanchor {
     display: none
 }
-.authentication_wrapper {
+
+.login_wrapper {
     right: 0px;
     margin: 0px auto;
     margin-top: 5%;
     max-width: 350px;
+    position: relative
+}
+.registration_wrapper {
+    right: 0px;
+    margin: 0px auto;
+    margin-top: 5%;
+    max-width: 500px;
     position: relative
 }
 .registration_form,
