@@ -360,6 +360,11 @@ body .container.body .right_col {
     border-radius: 0;
     height: 57px
 }
+.img-responsive-height {
+    display: block;
+    max-width: auto;
+    height: 100%;
+}
 @media (max-width: 991px) {
     .nav-md .container.body .right_col,
     .nav-md .container.body .top_nav {
@@ -809,7 +814,7 @@ a:focus {
     text-overflow: ellipsis;
     overflow: hidden;
     font-weight: 400;
-    font-size: 22px;
+    font-size: 26px;
     width: 100%;
     color: #ECF0F1 !important;
     margin-left: 0 !important;
@@ -817,11 +822,18 @@ a:focus {
     display: block;
     height: 55px;
     margin: 0;
-    padding-left: 10px
+    padding-left: 15px
 }
 .site_title:hover,
 .site_title:focus {
     text-decoration: none
+}
+.site_title .site_brand {
+    float: left;
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
 }
 .nav.navbar-nav>li>a {
     color: #515356 !important
