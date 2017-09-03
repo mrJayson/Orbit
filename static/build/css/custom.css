@@ -1098,6 +1098,10 @@ h2 {
     font-size: 16px;
     font-weight: 500
 }
+.x_content .textarea_primary textarea {
+    height: 100%;
+    resize: vertical;
+}
 legend {
     padding-bottom: 7px
 }

@@ -1,2 +1,6 @@
 Django==1.11.4
+django-tinymce==2.6.0
+django-uuslug==1.1.8
+python-slugify==1.2.4
 pytz==2017.2
+Unidecode==0.4.21

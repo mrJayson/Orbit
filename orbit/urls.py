@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^', include('authentication.urls', namespace='authentication')),
     url(r'^', include('dashboard.urls', namespace='dashboard')),
+    url(r'^page/', include('pages.urls', namespace='pages')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
