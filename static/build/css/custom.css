@@ -698,6 +698,10 @@ a:focus {
         position: relative
     }
 }
+.navbar-btn {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
 .top_nav .dropdown-menu li {
     width: 100%
 }
