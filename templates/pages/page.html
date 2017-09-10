@@ -14,9 +14,31 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-              <h4>
+              <h2>
                 {{ object.title }}
-              </h4>
+              </h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li class="dropdown pull-right">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <i class="fa fa-wrench"></i>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="#">Edit<i class="fa fa-edit pull-right"></i></a>
+                    </li>
+                    <li>
+                      <a href="#">Share<i class="fa fa-share-alt pull-right"></i></a>
+                    </li>
+                    <li>
+                      <a href="#">Tag<i class="fa fa-tag pull-right"></i></a>
+                    </li>
+                    <li>
+                      <a href="#">Print<i class="fa fa-print pull-right"></i></a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
             </div>
             <div class="x_content">
               {{ object.content }}
