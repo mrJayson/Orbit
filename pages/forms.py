@@ -19,24 +19,13 @@ class PageCreateForm(ModelForm):
             'title',
             'content',
         ]
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder' : _("Title goes here..."),
+            }),
 
-    title = forms.CharField(
-        required = True,
-        label = "",
-        max_length = 50,
-        widget=forms.TextInput(attrs={
-            'placeholder' : _("Page Title"),
-            'class' : 'form-control',
-        }),
-    )
-    content = forms.CharField(
-        required = False,
-        label = "",
-        widget = forms.Textarea(attrs={
-            'placeholder' : _("Begin typing here"),
-            'class' : 'form-control',
-        }),
-    )
+        }
 
     def save(self, commit = True):
         page = super(PageCreateForm, self).save(commit=False)

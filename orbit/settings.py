@@ -42,7 +42,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-
+    'ckeditor',
 ]
 
 LOCAL_APPS = [
@@ -168,3 +168,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# STATIC CONFIGURATION
+# ------------------------------------------------------------------------------
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': '100%',
+        'width': '100%',
+        'extraPlugins': ','.join([
+            'autogrow',
+        ])
+    }
+}

@@ -2,6 +2,11 @@
 
 {% block title %}New Page{% endblock title %}
 
+{% block javascripts %}
+  {{ block.super }}
+  {{ form.media }}
+{% endblock %}
+
 {% block content %}
   <div class="">
     <div class="page-title">
