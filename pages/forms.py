@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 from .models import Page
 
-class PageCreateForm(ModelForm):
+class PageForm(ModelForm):
 
     error_messages = {
         'password_mismatch' : _("The two password fields do not match")
@@ -11,7 +11,7 @@ class PageCreateForm(ModelForm):
 
     def __init__(self, account=None, *args, **kwargs):
         self.account = account
-        super(PageCreateForm, self).__init__(*args, **kwargs)
+        super(PageForm, self).__init__(*args, **kwargs)
 
     class Meta:
         model = Page
@@ -28,7 +28,7 @@ class PageCreateForm(ModelForm):
         }
 
     def save(self, commit = True):
-        page = super(PageCreateForm, self).save(commit=False)
+        page = super(PageForm, self).save(commit=False)
         page.author = self.account
         page.version = 1
         if commit:

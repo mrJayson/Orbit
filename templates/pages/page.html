@@ -18,10 +18,26 @@
                 {{ object.title }}
               </h2>
               <div class="btn-group pull-right">
-                <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Trash"><i class="fa fa-trash"></i></button>
-                <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Print"><i class="fa fa-print"></i></button>
-                <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Tag"><i class="fa fa-tag"></i></button>
-                <button class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</button>
+                <a href="#">
+                  <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Trash">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </a>
+                <a href="#">
+                  <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Print">
+                    <i class="fa fa-print"></i>
+                  </button>
+                </a>
+                <a href="#">
+                  <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Tag">
+                    <i class="fa fa-tag"></i>
+                  </button>
+                </a>
+                <a href="{% url 'pages:edit' slug=object.slug %}">
+                  <button class="btn btn-sm btn-primary">
+                    <i class="fa fa-edit"></i> Edit
+                  </button>
+                </a>
               </div>
 
               <div class="clearfix"></div>

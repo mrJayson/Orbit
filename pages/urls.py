@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import PageView, PageCreateView, PageIndexView
+from .views import PageView, PageCreateView, PageEditView, PageIndexView
 
 urlpatterns = [
     url(
@@ -11,6 +11,11 @@ urlpatterns = [
         regex = r'^index/?$',
         view = PageIndexView.as_view(),
         name='index'
+    ),
+    url(
+        regex = r'^(?P<slug>[^/]+)/edit$',
+        view = PageEditView.as_view(),
+        name='edit'
     ),
     url(
         regex = r'^(?P<slug>[^/]+)/?$',
