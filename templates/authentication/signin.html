@@ -34,9 +34,16 @@
         <div class="clearfix"></div>
           <br />
         <div class="separator">
-          <p class="change_link">Sign ups are currently open!
-            <a href="{% url 'authentication:signup' %}"class="to_register">Create Account</a>
-          </p>
+          {% if ACCOUNTS_DISABLE_SIGNUP %}
+            <p class="change_link">
+              Sign ups are currently closed!
+            </p>
+          {% else %}
+            <p class="change_link">
+              Sign ups are currently open!
+              <a href="{% url 'authentication:signup' %}"class="to_register">Create Account</a>
+            </p>
+          {% endif %}
         </div>
       </form>
     </section>

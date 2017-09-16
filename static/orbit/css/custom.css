@@ -3597,8 +3597,8 @@ form:after {
 }
 .authentication_content div .reset_pass {
     margin-top: 13px !important;
-    margin-right: 39px;
-    float: right
+    margin-left: 39px;
+    float: left
 }
 .separator {
     border-top: 1px solid #D8D8D8;
@@ -3618,8 +3618,8 @@ form:after {
 }
 .authentication_content form input[type="submit"],
 #content form .submit {
-    float: left;
-    margin-left: 38px
+    float: right;
+    margin-right: 38px
 }
 .button a {
     background: url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png) 0 -112px no-repeat;
