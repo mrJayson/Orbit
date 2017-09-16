@@ -1,0 +1,66 @@
+{% extends "base_site.html" %}
+
+{% block content %}
+  <div class="">
+    <div class="page-title">
+      <div class="col-md-4 col-sm-6 pull-right">
+        <div class="form-group top_search">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span><i class="fa fa-search"></i></span></button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-sm-1 text-center">
+              <span>
+                <i class="fa fa-calendar" data-placement="top" data-toggle="tooltip" data-original-title="Date"></i>
+              </span>
+            </th>
+            <th class="col-sm-8">
+              Meeting
+            </th>
+            <th class="col-sm-1 text-center">
+              <span>
+                <i class="fa fa-file-text" data-placement="top" data-toggle="tooltip" data-original-title="Notes"></i>
+              </span>
+            </th>
+            <th class="col-sm-2 text-center">
+              <span>
+                <i class="fa fa-user" data-placement="top" data-toggle="tooltip" data-original-title="Attendance"></i>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for meeting in objects %}
+
+          {% endfor %}
+          <tr>
+            <td>
+              <h5 class="text-center">24 Sep</h5>
+            </td>
+            <td>
+              <h5>Monthly Outburst Meeting @ Parramatta</h5>
+            </td>
+            <td class="text-center">
+              <h6>
+                <i class="fa fa-file-text-o"></i>
+              </h6>
+            </td>
+            <td class="text-center">
+              <h6>1/24</h6>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

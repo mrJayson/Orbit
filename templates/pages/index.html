@@ -73,7 +73,25 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% for page in recently_modified %}
+                    <tr>
+                      <td>
 
+                      </td>
+                      <td>
+                        {{ page.title }}
+                      </td>
+                      <td>
+                        {{ page.category }}
+                      </td>
+                      <td>
+                        {{ page.creation_date }}
+                      </td>
+                      <td>
+                        {{ page.author }}
+                      </td>
+                    </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>

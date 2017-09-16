@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.views.generic import CreateView, DetailView, TemplateView, UpdateView
 from .forms import PageForm
 from .models import Page
 
@@ -48,6 +48,10 @@ class PageEditView(LoginRequiredMixin, UpdateView):
         return reverse('pages:page', kwargs={'slug': self.object.slug})
 
 
-class PageIndexView(LoginRequiredMixin, ListView):
-    template_name = 'pages/page_index.html'
-    model = Page
+class PageIndexView(LoginRequiredMixin, TemplateView):
+    template_name = 'pages/index.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(PageIndexView, self).get_context_data(*args, **kwargs)
+        context['recently_modified'] = Page.objects.order_by('creation_date')[:20]
+        return context
