@@ -7,44 +7,62 @@
       <li class="">
         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           <img src="/static/images/img.jpg" alt="">John Doe
-          <span class=" fa fa-angle-down"></span>
+          <span class="fa fa-angle-down"></span>
         </a>
         <ul class="dropdown-menu dropdown-usermenu pull-right">
           <li>
             <a href="javascript:;">
-              <span><i class="fa fa-user pull-right"></i></span>
               <span>Profile</span>
+              <span><i class="fa fa-user pull-right"></i></span>
             </a>
           </li>
           <li>
             <a>
-              <span><i class="fa fa-envelope-o pull-right"></i></span>
               <span>Messages</span>
+              <span><i class="fa fa-envelope-o pull-right"></i></span>
             </a>
           </li>
           <li>
             <a href="javascript:;">
-              <span><i class="fa fa-gear pull-right"></i></span>
               <span>Settings</span>
+              <span><i class="fa fa-gear pull-right"></i></span>
             </a>
           </li>
           <li>
             <a href="javascript:;">
-              <span><i class="fa fa-question-circle pull-right"></i></span>
               <span>Help</span>
+              <span><i class="fa fa-question-circle pull-right"></i></span>
             </a>
           </li>
           <li>
             <a href="{% url 'authentication:signout' %}">
+              <span>Log Out</span>
               <span><i class="fa fa-sign-out pull-right"></i></span>
-               <span>Log Out</span>
              </a>
            </li>
         </ul>
       </li>
       <li>
-        <div>
-          <a href="{% url 'pages:create' %}" type="button" class="btn btn-default navbar-btn">Create</a>
+        <div class="btn-group">
+          <button data-toggle="dropdown" class="btn btn-default dropdown-toggle navbar-btn" type="button" aria-expanded="false">
+            <span>Create </span>
+            <span class="caret"></span>
+          </button>
+          <ul role="menu" class="dropdown-menu">
+            <li>
+              <a href="{% url 'meetings:create' %}">
+                <span>Meeting</span>
+                <span><i class="fa fa-group pull-right"></i></span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'pages:create' %}">
+                <span>Page</span>
+                <span><i class="fa fa-file-text-o pull-right"></i></span>
+              </a>
+            </li>
+
+          </ul>
         </div>
       </li>
     </ul>
