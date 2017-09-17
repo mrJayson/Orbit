@@ -11,3 +11,11 @@ class MeetingForm(ModelForm):
             'title',
             'date',
         ]
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+            }),
+            'date': forms.DateInput(attrs={
+                'class': 'form-control',
+            })
+        }
