@@ -175,7 +175,6 @@ STATICFILES_DIRS = [
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'height': '100vh',
         'width': '100%',
         'extraPlugins': ','.join([
             'autogrow',

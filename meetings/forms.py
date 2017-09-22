@@ -9,13 +9,21 @@ class MeetingForm(ModelForm):
         model = Meeting
         fields = [
             'title',
-            'date',
+            'start',
+            'end',
+            'content',
         ]
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-control',
+                'placeholder': 'Title',
             }),
-            'date': forms.DateInput(attrs={
+            'start': forms.DateInput(attrs={
                 'class': 'form-control',
-            })
+                'placeholder':'Start',
+            }),
+            'end': forms.DateInput(attrs={
+                'class': 'form-control',
+                'placeholder':'End',
+            }),
         }

@@ -16,16 +16,6 @@
         <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
         <!-- Font Awesome -->
         <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-        <!-- NProgress -->
-        <!--<link href="{% static 'nprogress/nprogress.css' %}" rel="stylesheet">-->
-        <!-- bootstrap-daterangepicker -->
-        <!--<link href="{% static 'bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">-->
-        <!-- iCheck -->
-        <!--<link href="{% static 'iCheck/skins/flat/green.css' %}" rel="stylesheet">-->
-        <!-- bootstrap-progressbar -->
-        <!--<link href="{% static 'bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet">-->
-        <!-- JQVMap -->
-        <!--<link href="{% static 'jqvmap/dist/jqvmap.min.css' %}" rel="stylesheet" />-->
       {% endblock stylesheets %}
       <!-- Custom Theme Style -->
       <link href="{% static 'orbit/css/custom.css' %}" rel="stylesheet">
@@ -46,14 +36,11 @@
               {% include "top_navigation.html" %}
             </div>
           {% endblock top_navigation %}
-
           {% block content_container %}
             <div class="right_col" role="main">
               {% block content %}{% endblock content %}
             </div>
           {% endblock content_container %}
-
-
           {% block footer %}
             <footer>
               {% include "footer.html" %}
@@ -66,35 +53,6 @@
         <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
         <!-- Bootstrap -->
         <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
-        <!-- FastClick -->
-        <script src="{% static 'fastclick/lib/fastclick.js' %}"></script>
-        <!-- NProgress -->
-        <script src="{% static 'nprogress/nprogress.js' %}"></script>
-        <!-- bootstrap-progressbar -->
-        <script src="{% static 'bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
-        <!-- iCheck -->
-        <script src="{% static 'iCheck/icheck.min.js' %}"></script>
-        <!-- bootstrap-daterangepicker -->
-        <script src="{% static 'moment/min/moment.min.js' %}"></script>
-        <script src="{% static 'bootstrap-daterangepicker/daterangepicker.js' %}"></script>
-        <!-- bootstrap-wysiwyg -->
-        <script src="{% static 'bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js' %}"></script>
-        <script src="{% static 'jquery.hotkeys/jquery.hotkeys.js' %}"></script>
-        <script src="{% static 'google-code-prettify/src/prettify.js' %}"></script>
-        <!-- jQuery Tags Input -->
-        <script src="{% static 'jquery.tagsinput/src/jquery.tagsinput.js' %}"></script>
-        <!-- Switchery -->
-        <script src="{% static 'switchery/dist/switchery.min.js' %}"></script>
-        <!-- Select2 -->
-        <script src="{% static 'select2/dist/js/select2.full.min.js' %}"></script>
-        <!-- Parsley -->
-        <script src="{% static 'parsleyjs/dist/parsley.min.js' %}"></script>
-        <!-- Autosize -->
-        <script src="{% static 'autosize/dist/autosize.min.js' %}"></script>
-        <!-- jQuery autocomplete -->
-        <script src="{% static 'devbridge-autocomplete/dist/jquery.autocomplete.min.js' %}"></script>
-        <!-- starrr -->
-        <script src="{% static 'starrr/dist/starrr.js' %}"></script>
       {% endblock %}
       <!-- Custom Theme Scripts -->
       <script src="{% static 'orbit/js/custom.js' %}"></script>
