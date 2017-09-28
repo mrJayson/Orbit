@@ -7,9 +7,9 @@
 {% block body %}
   <div class="registration_wrapper">
     {% for error in form.non_field_errors %}
-    <div class="alert alert-error" role="alert">
+      <div class="alert alert-error" role="alert">
         {{ error }}
-    </div>
+      </div>
     {% endfor %}
     <section class="authentication_content">
       <form method="POST">
@@ -17,12 +17,14 @@
         <h1>Create Account</h1>
         {% for field in form %}
           <div class="form-group {% if field.errors %}has-error{% endif %}">
-            <label class="control-label" for="{{ field.auto_id }}">{{ field.errors.as_text|cut:"* "}}</label>
+            {% if field.errors %}
+              <label class="control-label" for="{{ field.auto_id }}">{{ field.errors.as_text|cut:"* "}}</label>
+            {% endif %}
             {{ field }}
           </div>
         {% endfor %}
         <div class="text-center">
-            <input type="submit" class="btn btn-default submit" value="Sign Up" />
+          <input type="submit" class="btn btn-default submit" value="Sign Up" />
         </div>
         <div class="clearfix"></div>
         <div class="separator">

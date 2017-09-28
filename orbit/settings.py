@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = ('127.0.0.1',)
+
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -43,6 +45,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'ckeditor',
+    'debug_toolbar'
 ]
 
 LOCAL_APPS = [
@@ -58,13 +61,14 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # ------------------------------------------------------------------------------
 
 MIDDLEWARE = [
-'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 
 ]
 
@@ -170,14 +174,53 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# STATIC CONFIGURATION
+# CKEDITOR CONFIGURATION
 # ------------------------------------------------------------------------------
 
 CKEDITOR_CONFIGS = {
     'default': {
         'width': '100%',
+        'height': '70vh',
         'extraPlugins': ','.join([
-            'autogrow',
-        ])
+            'tableresize',
+        ]),
+        'removePlugins': ','.join([
+            'flash',
+        ]),
+        'toolbar': 'toolbar',
+        'toolbar_toolbar': [
+            {
+                'name': 'styles',
+                'items': ['Styles', 'Format', 'Font', 'FontSize']
+            },
+            {
+                'name': 'insert',
+                'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley']
+            },
+            {
+                'name': 'colors',
+                'items': ['TextColor', 'BGColor']
+            },
+            {
+                'name': 'fontstyles',
+                'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+            },
+            {
+                'name': 'list',
+                'items': ['BulletedList', 'NumberedList']
+            },
+            {
+                'name': 'justify',
+                'items': ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+            },
+            {
+                'name': 'indent',
+                'items': ['Outdent', 'Indent']
+            },
+            {
+                'name': 'links',
+                'items': ['Link', 'Unlink', 'Anchor']
+            },
+        ],
     }
 }

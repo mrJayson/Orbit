@@ -1,29 +1,22 @@
 from django import forms
-from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
+from pages.forms import PageForm
 from .models import Meeting
 
-class MeetingForm(ModelForm):
 
-    class Meta:
+class MeetingForm(PageForm):
+
+    class Meta(PageForm.Meta):
         model = Meeting
-        fields = [
-            'title',
-            'start',
-            'end',
-            'content',
-        ]
-        widgets = {
-            'title': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Title',
-            }),
+        fields = PageForm.Meta.fields + ['start', 'end']
+        widgets = PageForm.Meta.widgets.copy()
+        widgets.update({
             'start': forms.DateInput(attrs={
                 'class': 'form-control',
-                'placeholder':'Start',
+                'placeholder': 'Start',
             }),
             'end': forms.DateInput(attrs={
                 'class': 'form-control',
-                'placeholder':'End',
+                'placeholder': 'End',
             }),
-        }
+        })

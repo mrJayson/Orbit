@@ -1,16 +1,17 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, TemplateView, UpdateView
 from .forms import PageForm
 from .models import Page
 
-class PageView(LoginRequiredMixin, DetailView):
-    template_name = 'pages/page.html'
+
+class PageDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'pages/detail.html'
     model = Page
+
 
 class PageCreateView(LoginRequiredMixin, CreateView):
-    template_name = 'pages/page_form.html'
+    template_name = 'pages/form.html'
     model = Page
     form_class = PageForm
 
@@ -26,10 +27,11 @@ class PageCreateView(LoginRequiredMixin, CreateView):
         return form
 
     def get_success_url(self, **kwargs):
-        return reverse('pages:page', kwargs={'slug': self.object.slug})
+        return reverse('pages:detail', kwargs={'slug': self.object.slug})
+
 
 class PageEditView(LoginRequiredMixin, UpdateView):
-    template_name = 'pages/page_form.html'
+    template_name = 'pages/form.html'
     model = Page
     form_class = PageForm
 
@@ -45,7 +47,7 @@ class PageEditView(LoginRequiredMixin, UpdateView):
         return form
 
     def get_success_url(self, **kwargs):
-        return reverse('pages:page', kwargs={'slug': self.object.slug})
+        return reverse('pages:detail', kwargs={'slug': self.object.slug})
 
 
 class PageIndexView(LoginRequiredMixin, TemplateView):

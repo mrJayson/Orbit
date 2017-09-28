@@ -1,0 +1,70 @@
+{% extends "base_site.html" %}
+{% load static %}
+
+{% block title %}New Meeting{% endblock %}
+
+{% block stylesheets %}
+  {{ block.super }}
+  <!-- bootstrap-daterangepicker -->
+  <link href="{% static 'bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+  {{ block.super }}
+  <script src="{% static 'moment/moment.js' %}"></script>
+  <script src="{% static 'bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+  <script src="{% static 'orbit/js/meetings/meeting_form.js' %}"></script>
+  {{ form.media }}
+{% endblock %}
+
+{% block content %}
+  {{ form.errors }}
+  {% for error in form.non_field_errors %}
+    <div class="alert alert-error" role="alert">
+      {{ error }}
+    </div>
+  {% endfor %}
+  <form method="POST">
+    {{ form.errors }}
+    {% csrf_token %}
+    <div class="col-sm-3 col-xs-12">
+      <div class="col-sm-12 col-xs-6">
+        <div class="form-group {% if form.start.errors %}has-error{% endif %}">
+          <div class="input-group date center-block" id="startDateTimePicker">
+            {% if form.start.errors %}
+              <label class="control-label" for="{{ form.start.auto_id }}">{{ form.start.errors.as_text|cut:"* "}}</label>
+            {% endif %}
+            {{ form.start }}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-xs-6">
+        <div class="form-group {% if form.end.errors %}has-error{% endif %}">
+          <div class="input-group date center-block" id="endDateTimePicker">
+            {% if form.end.errors %}
+              <label class="control-label" for="{{ form.end.auto_id }}">{{ form.end.errors.as_text|cut:"* "}}</label>
+            {% endif %}
+            {{ form.end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9 col-xs-12">
+      <div class="form-group {% if form.title.errors %}has-error{% endif %}">
+        {% if form.title.errors %}
+          <label class="control-label" for="{{ form.title.auto_id }}">{{ form.title.errors.as_text|cut:"* "}}</label>
+        {% endif %}
+        {{ form.title }}
+      </div>
+      <div class="form-group textarea-primary {% if form.content.errors %}has-error{% endif %}">
+        {% if form.content.errors %}
+          <label class="control-label" for="{{ form.content.auto_id }}">{{ form.content.errors.as_text|cut:"* "}}</label>
+        {% endif %}
+        {{ form.content }}
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-default pull-right" value="Save" />
+      </div>
+    </div>
+  </form>
+{% endblock %}

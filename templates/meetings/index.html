@@ -18,51 +18,52 @@
     </div>
     <div class="clearfix"></div>
     <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="col-sm-1 text-center">
-              <span>
-                <i class="fa fa-calendar" data-placement="top" data-toggle="tooltip" data-original-title="Date"></i>
-              </span>
-            </th>
-            <th class="col-sm-8">
-              Meeting
-            </th>
-            <th class="col-sm-1 text-center">
-              <span>
-                <i class="fa fa-file-text" data-placement="top" data-toggle="tooltip" data-original-title="Notes"></i>
-              </span>
-            </th>
-            <th class="col-sm-2 text-center">
-              <span>
-                <i class="fa fa-user" data-placement="top" data-toggle="tooltip" data-original-title="Attendance"></i>
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for meeting in objects %}
-
-          {% endfor %}
-          <tr>
-            <td>
-              <h5 class="text-center">24 Sep</h5>
-            </td>
-            <td>
-              <h5>Monthly Outburst Meeting @ Parramatta</h5>
-            </td>
-            <td class="text-center">
-              <h6>
-                <i class="fa fa-file-text-o"></i>
-              </h6>
-            </td>
-            <td class="text-center">
-              <h6>1/24</h6>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="x_panel">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col-sm-2 col-xs-3 text-center">
+                <span>
+                  <i class="fa fa-calendar" data-placement="top" data-toggle="tooltip" data-original-title="Date"></i>
+                </span>
+              </th>
+              <th class="col-sm-8 col-xs-7">
+                Meeting
+              </th>
+              <th class="col-sm-1 text-center">
+                <span>
+                  <i class="fa fa-file-text" data-placement="top" data-toggle="tooltip" data-original-title="Notes"></i>
+                </span>
+              </th>
+              <th class="col-sm-1 text-center">
+                <span>
+                  <i class="fa fa-user" data-placement="top" data-toggle="tooltip" data-original-title="Attendance"></i>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for meeting in object_list %}
+              <tr>
+                <td>
+                  <h6 class="text-center">{{ meeting.display_date_range }}</h6>
+                </td>
+                <td>
+                  <h6><a href="{{ meeting.get_absolute_url }}">{{ meeting.title }}</a></h6>
+                </td>
+                <td class="text-center">
+                  <h6>
+                    <i class="fa fa-file-text-o"></i>
+                  </h6>
+                </td>
+                <td class="text-center">
+                  <h6>1/24</h6>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 {% endblock %}
