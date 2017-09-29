@@ -46,7 +46,7 @@
             {% for meeting in object_list %}
               <tr>
                 <td>
-                  <h6 class="text-center">{{ meeting.display_date_range }}</h6>
+                  <h6 class="text-center" data-placement="left" data-toggle="tooltip" data-original-title="{{ meeting.end|timeuntil }}">{{ meeting.display_date_range }}</h6>
                 </td>
                 <td>
                   <h6><a href="{{ meeting.get_absolute_url }}">{{ meeting.title }}</a></h6>

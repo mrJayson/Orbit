@@ -19,6 +19,9 @@ class Meeting(Page):
         else:
             return self.start.strftime('%d %b') + ' - ' + self.end.strftime('%d %b')
 
+    def display_full_date_range(self):
+        return self.start.strftime('%Y, %b %d, %I:%M%p') + ' - ' + self.end.strftime('%Y, %b %d, %I:%M%p')
+
     def get_absolute_url(self):
         return reverse('meetings:detail', kwargs={'slug': self.slug})
 
