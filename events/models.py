@@ -5,7 +5,7 @@ from accounts.models import Account
 from pages.models import Page
 
 
-class Meeting(Page):
+class Event(Page):
     start = models.DateTimeField()
     end = models.DateTimeField()
     # attendance = models.ManyToManyField(Account)
@@ -23,8 +23,8 @@ class Meeting(Page):
         return self.start.strftime('%Y, %b %d, %I:%M%p') + ' - ' + self.end.strftime('%Y, %b %d, %I:%M%p')
 
     def get_absolute_url(self):
-        return reverse('meetings:detail', kwargs={'slug': self.slug})
+        return reverse('events:detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.title, instance=self)
-        super(Meeting, self).save(*args, **kwargs)
+        super(Event, self).save(*args, **kwargs)

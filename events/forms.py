@@ -1,13 +1,13 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from pages.forms import PageForm
-from .models import Meeting
+from .models import Event
 
 
-class MeetingForm(PageForm):
+class EventForm(PageForm):
 
     class Meta(PageForm.Meta):
-        model = Meeting
+        model = Event
         fields = PageForm.Meta.fields + ['start', 'end']
         widgets = PageForm.Meta.widgets.copy()
         widgets.update({

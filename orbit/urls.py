@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^', include('authentication.urls', namespace='authentication')),
     url(r'^', include('dashboard.urls', namespace='dashboard')),
-    url(r'^meeting/', include('meetings.urls', namespace='meetings')),
+    url(r'^event/', include('events.urls', namespace='events')),
     url(r'^page/', include('pages.urls', namespace='pages')),
     url(r'^__debug__/', include(debug_toolbar.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

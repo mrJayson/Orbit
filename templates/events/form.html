@@ -1,7 +1,7 @@
 {% extends "base_site.html" %}
 {% load static %}
 
-{% block title %}New Meeting{% endblock %}
+{% block title %}New Event{% endblock %}
 
 {% block stylesheets %}
   {{ block.super }}
@@ -13,7 +13,7 @@
   {{ block.super }}
   <script src="{% static 'moment/moment.js' %}"></script>
   <script src="{% static 'bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
-  <script src="{% static 'orbit/js/meetings/meeting_form.js' %}"></script>
+  <script src="{% static 'orbit/js/events/event_form.js' %}"></script>
   {{ form.media }}
 {% endblock %}
 

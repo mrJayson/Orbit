@@ -1,6 +1,6 @@
 {% extends "base_site.html" %}
 
-{% block title %}Meetings{% endblock %}
+{% block title %}Events{% endblock %}
 
 {% block content %}
   <div class="">
@@ -28,7 +28,7 @@
                 </span>
               </th>
               <th class="col-sm-8 col-xs-7">
-                Meeting
+                Event
               </th>
               <th class="col-sm-1 text-center">
                 <span>
@@ -43,13 +43,13 @@
             </tr>
           </thead>
           <tbody>
-            {% for meeting in object_list %}
+            {% for event in object_list %}
               <tr>
                 <td>
-                  <h6 class="text-center" data-placement="left" data-toggle="tooltip" data-original-title="{{ meeting.end|timeuntil }}">{{ meeting.display_date_range }}</h6>
+                  <h6 class="text-center" data-placement="left" data-toggle="tooltip" data-original-title="{{ event.end|timeuntil }}">{{ event.display_date_range }}</h6>
                 </td>
                 <td>
-                  <h6><a href="{{ meeting.get_absolute_url }}">{{ meeting.title }}</a></h6>
+                  <h6><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h6>
                 </td>
                 <td class="text-center">
                   <h6>
