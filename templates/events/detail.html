@@ -11,7 +11,7 @@
       </div>
       <div class="title_right">
         <div class="pull-right">
-          <h4><span class="label label-info">{{ object.display_full_date_range }}</span></h4>
+          <h4><span class="label label-info" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="{{ object.duration }} long">{{ object.display_date_time_range }}</span></h4>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
                 <i class="fa fa-tag"></i>
               </button>
             </a>
-            <a href="{% url 'pages:edit' slug=object.slug %}">
+            <a href="{% url 'events:edit' slug=object.slug %}">
               <button class="btn btn-sm btn-primary">
                 <i class="fa fa-edit"></i> Edit
               </button>
