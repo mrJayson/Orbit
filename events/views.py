@@ -40,16 +40,5 @@ class EventEditView(LoginRequiredMixin, UpdateView):
     model = Event
     form_class = EventForm
 
-    def get_form(self, form_class=None):
-        if form_class is None:
-            form_class = self.get_form_class()
-
-        if (self.request.method == 'POST'):
-            # pass in the author here
-            form = form_class(self.request.user, self.request.POST)
-        else:
-            form = form_class()
-        return form
-
     def get_success_url(self, **kwargs):
         return reverse('events:detail', kwargs={'slug': self.object.slug})
