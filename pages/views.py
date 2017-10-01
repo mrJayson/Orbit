@@ -21,7 +21,7 @@ class PageCreateView(LoginRequiredMixin, CreateView):
 
         if (self.request.method == 'POST'):
             # pass in the author here
-            form = form_class(self.request.user, self.request.POST)
+            form = form_class(data=self.request.POST, author=self.request.user)
         else:
             form = form_class()
         return form
@@ -30,7 +30,7 @@ class PageCreateView(LoginRequiredMixin, CreateView):
         return reverse('pages:detail', kwargs={'slug': self.object.slug})
 
 
-class PageEditView(LoginRequiredMixin, UpdateView):
+class PageUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'pages/form.html'
     model = Page
     form_class = PageForm
@@ -40,11 +40,15 @@ class PageEditView(LoginRequiredMixin, UpdateView):
             form_class = self.get_form_class()
 
         if (self.request.method == 'POST'):
-            # pass in the author here
-            form = form_class(self.request.user, self.request.POST)
+            form = form_class(author=self.request.user, version=self.object.version, **self.get_form_kwargs())
         else:
-            form = form_class()
+            form = super(PageUpdateView, self).get_form(form_class)
         return form
+
+    def form_valid(self, form):
+        # Don't update existing instance, create a new one
+
+        return super(PageUpdateView, self).form_valid(form)
 
     def get_success_url(self, **kwargs):
         return reverse('pages:detail', kwargs={'slug': self.object.slug})

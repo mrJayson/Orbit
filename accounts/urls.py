@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import AccountDetailView, AccountEditView
+from .views import AccountDetailView, AccountUpdateView
 
 
 urlpatterns = [
@@ -11,7 +11,7 @@ urlpatterns = [
     ),
     url(
         regex=r'^[A-Za-z0-9]+/edit$',
-        view=AccountEditView.as_view(),
+        view=AccountUpdateView.as_view(),
         name='edit'
     ),
 ]

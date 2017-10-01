@@ -1,31 +1,21 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.views.generic import ListView
 from .forms import EventForm
 from .models import Event
+from pages.views import PageCreateView, PageDetailView, PageUpdateView
 
 
-class EventCreateView(LoginRequiredMixin, CreateView):
+class EventCreateView(PageCreateView):
     template_name = 'events/form.html'
     model = Event
     form_class = EventForm
-
-    def get_form(self, form_class=None):
-        if form_class is None:
-            form_class = self.get_form_class()
-
-        if (self.request.method == 'POST'):
-            # pass in the author here
-            form = form_class(self.request.user, self.request.POST)
-        else:
-            form = form_class()
-        return form
 
     def get_success_url(self, **kwargs):
         return reverse('events:detail', kwargs={'slug': self.object.slug})
 
 
-class EventDetailView(LoginRequiredMixin, DetailView):
+class EventDetailView(PageDetailView):
     template_name = 'events/detail.html'
     model = Event
 
@@ -35,7 +25,7 @@ class EventIndexView(LoginRequiredMixin, ListView):
     model = Event
 
 
-class EventEditView(LoginRequiredMixin, UpdateView):
+class EventUpdateView(PageUpdateView):
     template_name = 'events/form.html'
     model = Event
     form_class = EventForm

@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, UpdateView
 
 
-class AccountEditView(LoginRequiredMixin, UpdateView):
+class AccountUpdateView(LoginRequiredMixin, UpdateView):
     pass
 
 

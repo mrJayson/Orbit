@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import EventCreateView, EventDetailView, EventEditView, EventIndexView
+from .views import EventCreateView, EventDetailView, EventUpdateView, EventIndexView
 
 urlpatterns = [
     url(
@@ -13,9 +13,9 @@ urlpatterns = [
         name='index'
     ),
     url(
-        regex=r'^(?P<slug>[^/]+)/edit$',
-        view=EventEditView.as_view(),
-        name='edit'
+        regex=r'^(?P<slug>[^/]+)/update$',
+        view=EventUpdateView.as_view(),
+        name='update'
     ),
     url(
         regex=r'^(?P<slug>[^/]+)/?$',

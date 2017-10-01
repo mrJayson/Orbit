@@ -30,7 +30,3 @@ class Event(Page):
 
     def get_absolute_url(self):
         return reverse('events:detail', kwargs={'slug': self.slug})
-
-    def save(self, *args, **kwargs):
-        self.slug = uuslug(self.title, instance=self)
-        super(Event, self).save(*args, **kwargs)
