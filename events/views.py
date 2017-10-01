@@ -23,6 +23,8 @@ class EventDetailView(PageDetailView):
 class EventIndexView(LoginRequiredMixin, ListView):
     template_name = 'events/index.html'
     model = Event
+    queryset = Event.objects.filter(active=True)
+    ordering = ['-creation_date']
 
 
 class EventUpdateView(PageUpdateView):
