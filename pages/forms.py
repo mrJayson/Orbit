@@ -35,6 +35,13 @@ class PageForm(ModelForm):
         if self.version is None:
             page.version = 1
         else:
+            existing_page = Page.objects.get(pk=page.pk)
+            existing_page.active = False
+            existing_page.save()
+
+            page.parent = existing_page  # Retain link to previous version
+            page.id = None  # Create a new instance, do not override existing instance
+            page.pk = None
             page.version = self.version + 1
         if commit:
             page.save()

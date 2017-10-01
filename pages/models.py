@@ -12,6 +12,7 @@ class Page(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     parent = models.ForeignKey('self', null=True)
     version = models.IntegerField()
+    active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.title, instance=self)

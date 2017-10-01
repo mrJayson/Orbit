@@ -45,11 +45,6 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
             form = super(PageUpdateView, self).get_form(form_class)
         return form
 
-    def form_valid(self, form):
-        # Don't update existing instance, create a new one
-
-        return super(PageUpdateView, self).form_valid(form)
-
     def get_success_url(self, **kwargs):
         return reverse('pages:detail', kwargs={'slug': self.object.slug})
 
