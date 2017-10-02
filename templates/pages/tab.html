@@ -1,0 +1,40 @@
+{% block tab %}
+  <div id="{{ tab_id }}" class="tab-pane fade {% if active %}active in{% endif %}" aria-labelledby="{{ tab_aria_label }}">
+    <div class="x_panel">
+      <div class="x_title">
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col-xs-1">Category</th>
+              <th class="col-xs-8">Title</th>
+              <th class="col-xs-1">Author</th>
+              <th class="col-xs-2">Last Modified</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for page in list %}
+              <tr>
+                <td>
+                  {{ page.category }}
+                  <span class="label label-primary center-block">Meeting</span>
+                </td>
+                <td>
+                  {{ page.title }}
+                </td>
+                <td>
+                  {{ page.author }}
+                </td>
+                <td>
+                  {{ page.creation_date }}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
