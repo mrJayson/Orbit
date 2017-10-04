@@ -35,6 +35,8 @@
       <div class="tab-content">
         {% include "pages/tab.html" with list=object_list tab_id="tab_all" tab_aria_label="all-tab" active=True %}
         {% include "pages/tab.html" with list=recently_modified tab_id="tab_recently_modified" tab_aria_label="recently-modified-tab" %}
+        {% include "pages/tab.html" with list=object_list tab_id="tab_recently_viewed" tab_aria_label="recently-viewed-tab" %}
+        {% include "pages/tab.html" with list=object_list tab_id="tab_pinned" tab_aria_label="pinned-tab" %}
       </div>
     </div>
   </div>

@@ -52,9 +52,9 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
 class PageIndexView(LoginRequiredMixin, ListView):
     template_name = 'pages/index.html'
     model = Page
-    queryset = Page.objects.filter(active=True)  # Refers to the 'All' Tab in the index
+    queryset = Page.objects.filter(active=True).select_subclasses()  # Refers to the 'All' Tab in the index
 
     def get_context_data(self, *args, **kwargs):
         context = super(PageIndexView, self).get_context_data(*args, **kwargs)
-        context['recently_modified'] = Page.objects.filter(active=True).order_by('creation_date')
+        context['recently_modified'] = Page.objects.filter(active=True).order_by('creation_date').select_subclasses()
         return context
