@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from .forms import PageForm
@@ -8,6 +9,13 @@ from .models import Page
 class PageDetailView(LoginRequiredMixin, DetailView):
     template_name = 'pages/detail.html'
     model = Page
+
+    def render_to_response(self, context, **response_kwargs):
+        page = Page.objects.get_subclass(pk=self.object.pk)
+        if type(page) == self.model:
+            return super(PageDetailView, self).render_to_response(context, **response_kwargs)
+        else:
+            return redirect(page, permanent=True)
 
 
 class PageCreateView(LoginRequiredMixin, CreateView):
@@ -47,6 +55,13 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self, **kwargs):
         return reverse('pages:detail', kwargs={'slug': self.object.slug})
+
+    def render_to_response(self, context, **response_kwargs):
+        page = Page.objects.get_subclass(pk=self.object.pk)
+        if type(page) == self.model:
+            return super(PageUpdateView, self).render_to_response(context, **response_kwargs)
+        else:
+            return redirect(page, permanent=True)
 
 
 class PageIndexView(LoginRequiredMixin, ListView):
