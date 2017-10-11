@@ -10,12 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-import os
 from django.contrib.messages import constants as messages
+from pathlib import Path
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE = Path(__file__)
+BASE_DIR = BASE.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -45,7 +46,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'ckeditor',
-    'debug_toolbar'
+    'debug_toolbar',
 ]
 
 LOCAL_APPS = [
@@ -81,7 +82,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            BASE_DIR / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -105,7 +106,7 @@ WSGI_APPLICATION = 'orbit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -153,6 +154,13 @@ USE_L10N = True
 
 USE_TZ = False
 
+# MEDIA CONFIGURATION
+# ------------------------------------------------------------------------------
+
+MEDIA_ROOT = BASE_DIR / 'public' / 'media'
+
+MEDIA_URL = 'media/'
+
 # MESSAGES CONFIGURATION
 # ------------------------------------------------------------------------------
 
@@ -168,10 +176,12 @@ MESSAGE_TAGS = {
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / 'public' / 'static'
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / 'static',
 ]
 
 # CKEDITOR CONFIGURATION

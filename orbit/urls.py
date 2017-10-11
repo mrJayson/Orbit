@@ -19,12 +19,20 @@ from django.conf.urls.static import static
 from django.contrib import admin
 import debug_toolbar
 
-urlpatterns = [
+local_patterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^', include('authentication.urls', namespace='authentication')),
     url(r'^', include('dashboard.urls', namespace='dashboard')),
     url(r'^event/', include('events.urls', namespace='events')),
     url(r'^page/', include('pages.urls', namespace='pages')),
+]
+
+third_party_patterns = [
     url(r'^__debug__/', include(debug_toolbar.urls)),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+
+django_patterns = static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+django_patterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns = local_patterns + third_party_patterns + django_patterns
