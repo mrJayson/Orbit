@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
 
 class Account(AbstractUser):
@@ -12,4 +13,11 @@ class Account(AbstractUser):
     # is_active
     # date_joined
 
-    bio = models.TextField()
+    bio = models.TextField(blank=True)
+
+    def get_absolute_url(self):
+        return reverse('accounts:detail', kwargs={'pk': self.pk})
+
+    @property
+    def full_name(self):
+        return self.first_name + ' ' + self.last_name
