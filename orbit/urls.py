@@ -17,7 +17,8 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-import debug_toolbar
+from debug_toolbar import urls as debug_toolbar
+from avatar import urls as avatar
 
 local_patterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,7 +30,8 @@ local_patterns = [
 ]
 
 third_party_patterns = [
-    url(r'^__debug__/', include(debug_toolbar.urls)),
+    url(r'^__debug__/', include(debug_toolbar)),
+    url(r'^avatar/', include(avatar)),
 ]
 
 django_patterns = static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -3,14 +3,13 @@ from .views import AccountDetailView, AccountUpdateView
 
 
 urlpatterns = [
-    # SignIn url in urlsignin.py since that lives under a different namespace
     url(
-        regex=r'^[A-Za-z0-9]+$',
+        regex=r'^(?P<pk>[^/]+)/?$',
         view=AccountDetailView.as_view(),
         name='detail'
     ),
     url(
-        regex=r'^[A-Za-z0-9]+/edit$',
+        regex=r'^(?P<pk>[^/]+)/edit$',
         view=AccountUpdateView.as_view(),
         name='edit'
     ),

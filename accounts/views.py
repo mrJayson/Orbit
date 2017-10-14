@@ -1,10 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, UpdateView
+from .models import Account
 
 
 class AccountUpdateView(LoginRequiredMixin, UpdateView):
-    pass
+    template_name = 'accounts/detail.html'
+    model = Account
 
 
 class AccountDetailView(LoginRequiredMixin, DetailView):
-    pass
+    template_name = 'accounts/detail.html'
+    model = Account
