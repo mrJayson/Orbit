@@ -25,11 +25,9 @@ BASE_DIR = BASE.parent.parent
 SECRET_KEY = 'x&fhq*148b(@&u5f5h7(sg#e6u5sv_=g@c8#i)+k)tyejee)i&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
-INTERNAL_IPS = ('127.0.0.1',)
+ALLOWED_HOSTS = ['*']
 
 
 # APP CONFIGURATION
@@ -47,7 +45,6 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'avatar',
     'ckeditor',
-    'debug_toolbar',
 ]
 
 LOCAL_APPS = [
@@ -70,8 +67,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-
 ]
 
 ROOT_URLCONF = 'orbit.urls'
