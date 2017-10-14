@@ -2971,6 +2971,11 @@ ul.user_data li p {
 ul.user_data li .progress {
     width: 90%
 }
+ul.user_data li i {
+    width: 20px;
+    float: 
+    display: inline-block;
+}
 .project_progress .progress {
     margin-bottom: 3px !important;
     margin-top: 5px

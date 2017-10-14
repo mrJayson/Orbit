@@ -1,7 +1,51 @@
 {% extends "base_site.html" %}
+{% load avatar_tags %}
 
-{% block title %}Profile | {{ request.user.full_name }}{% endblock title %}
+{% block title %}Profile | {{ object.full_name }}{% endblock title %}
 
 {% block content %}
-
+  <div>
+    <div class="page-title">
+      <div class="title_left">
+        <h3>{{ object.full_name }}</h3>
+      </div>
+      <div class="title_right">
+        <div class="btn-group pull-right ">
+          <a href="">
+            <button class="btn btn-sm btn-primary">
+              <i class="fa fa-edit"></i> Update Profile
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="x_panel">
+        <div class="x_content">
+          <div class="col-sm-3 col-xs-12">
+            <div>
+              {% avatar user 200 %}
+            </div>
+            <div>
+              <ul class="list-unstyled user_data">
+                <li>
+                  <i class="fa fa-map-marker text-center"></i> Smithfield
+                </li>
+                <li>
+                  <i class="fa fa-graduation-cap text-center"></i> University of New South Wales
+                </li>
+                <li>
+                  <i class="fa fa-info-circle text-center"></i>{{ object.bio }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-9 col-xs-12">
+            {% lorem 10 %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}

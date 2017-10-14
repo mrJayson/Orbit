@@ -1,3 +1,4 @@
+{% load avatar_tags %}
 <div class="nav_menu">
   <nav>
     <div class="nav toggle">
@@ -6,6 +7,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="">
         <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <span>{% avatar user 30 %}</span>
           <span>{{ request.user.full_name }}</span>
           <span class="fa fa-angle-down"></span>
         </a>

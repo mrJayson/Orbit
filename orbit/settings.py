@@ -45,6 +45,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'avatar',
     'ckeditor',
     'debug_toolbar',
 ]
@@ -159,7 +160,7 @@ USE_TZ = False
 
 MEDIA_ROOT = BASE_DIR / 'public' / 'media'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 # MESSAGES CONFIGURATION
 # ------------------------------------------------------------------------------
