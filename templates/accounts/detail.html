@@ -4,12 +4,6 @@
 
 {% block title %}{{ object.full_name }}{% endblock title %}
 
-{% block stylesheets %}
-  {{ block.super }}
-  <!-- bootstrap-daterangepicker -->
-  <link href="{% static 'orbit/css/avatar-colours.css' %}" rel="stylesheet"/>
-{% endblock %}
-
 {% block content %}
   <div>
     <div class="page-title">
@@ -31,8 +25,8 @@
       <div class="x_panel">
         <div class="x_content">
           <div class="col-sm-3 col-xs-12">
-            <div>
-              {% avatar user 200 %}
+            <div class="text-center">
+              {% avatar user 225 %}
             </div>
             <div>
               <ul class="list-unstyled user_data">
