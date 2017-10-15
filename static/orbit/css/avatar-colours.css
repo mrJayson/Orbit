@@ -1,0 +1,77 @@
+/* Colour Definitions */
+:root {
+	--red-900: #B71C1C;
+	--pink-900: #880E4F;
+	--purple-900: #4A148C;
+	--deep-purple-900: #311B92;
+	--indigo-900: #1A237E;
+	--blue-900: #0D47A1;
+	--light-blue-900: #01579B;
+	--cyan-900: #006064;
+	--teal-900: #004D40;
+	--green-900: #1B5E20;
+	--light-green-900: #33691E;
+	--lime-900: #827717;
+	--amber-900: #FF6F00;
+	--orange-900: #E65100;
+	--deep-orange-900: #BF360C;
+	--brown-900: #3E2723;
+	--grey-900: #212121;
+	--blue-grey-900: #263238;
+
+}
+
+.colour-0 {
+	background: var(--red-900);
+}
+.colour-1 {
+	background: var(--pink-900);
+}
+.colour-2 {
+	background: var(--purple-900);
+}
+.colour-3 {
+	background: var(--deep-purple-900);
+}
+.colour-4 {
+	background: var(--indigo-900);
+}
+.colour-5 {
+	background: var(--blue-900);
+}
+.colour-6 {
+	background: var(--light-blue-900);
+}
+.colour-7 {
+	background: var(--cyan-900);
+}
+.colour-8 {
+	background: var(--teal-900);
+}
+.colour-9 {
+	background: var(--green-900);
+}
+.colour-10 {
+	background: var(--light-green-900);
+}
+.colour-11 {
+	background: var(--lime-900);
+}
+.colour-12 {
+	background: var(--amber-900);
+}
+.colour-13 {
+	background: var(--orange-900);
+}
+.colour-14 {
+	background: var(--deep-orange-900);
+}
+.colour-15 {
+	background: var(--brown-900);
+}
+.colour-16 {
+	background: var(--grey-900);
+}
+.colour-17 {
+	background: var(--blue-grey-900);
+}

@@ -137,6 +137,13 @@ LOGIN_URL = 'authentication:signin'
 # The default post authentication redirect url
 LOGIN_REDIRECT_URL = 'dashboard:dashboard'
 
+# AVATAR CONFIGURATION
+# ------------------------------------------------------------------------------
+
+NUM_COLOURS = 18
+
+AVATAR_AUTO_GENERATE_SIZES = (30, 200)
+
 # GENERAL CONFIGURATION
 # ------------------------------------------------------------------------------
 

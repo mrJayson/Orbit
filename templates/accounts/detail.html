@@ -1,6 +1,15 @@
 {% extends "base_site.html" %}
-{% load avatar_tags %}
-{% block title %}Profile | {{ object.full_name }}{% endblock title %}
+{% load avatar_tag %}
+{% load static %}
+
+{% block title %}{{ object.full_name }}{% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+  <!-- bootstrap-daterangepicker -->
+  <link href="{% static 'orbit/css/avatar-colours.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
   <div>
     <div class="page-title">
