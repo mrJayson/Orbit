@@ -36,7 +36,7 @@ class PageForm(ModelForm):
             page.version = 1
         else:
             existing_page = Page.objects.get(pk=page.pk)
-            existing_page.active = False
+            existing_page.is_removed = True
             existing_page.save()
 
             page.parent = existing_page  # Retain link to previous version

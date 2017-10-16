@@ -1,12 +1,13 @@
 from ckeditor.fields import RichTextField
 from django.db import models
 from django.urls import reverse
-from model_utils.managers import InheritanceManager
+from model_utils.models import SoftDeletableModel
 from uuslug import uuslug
 from accounts.models import Account
+from .managers import PageManager
 
 
-class Page(models.Model):
+class Page(SoftDeletableModel):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, unique=True)
     content = RichTextField(blank=True)
@@ -14,10 +15,7 @@ class Page(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     parent = models.ForeignKey('self', null=True)
     version = models.IntegerField()
-    active = models.BooleanField(default=True)
-
-    # Downcast all pages to subclasses if applicable
-    objects = InheritanceManager()
+    objects = PageManager()
 
     def get_absolute_url(self):
         return reverse('pages:detail', kwargs={'slug': self.slug})
