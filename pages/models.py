@@ -2,7 +2,7 @@ from ckeditor.fields import RichTextField
 from django.db import models
 from django.urls import reverse
 from model_utils.models import SoftDeletableModel
-from uuslug import uuslug
+import uuslug
 from accounts.models import Account
 from .managers import PageManager
 
@@ -21,5 +21,13 @@ class Page(SoftDeletableModel):
         return reverse('pages:detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
-        self.slug = uuslug(self.title, instance=self)
+        self.slug = self.slugify()
         super(Page, self).save(*args, **kwargs)
+
+    def slugify(self):
+        if self.is_removed:
+            # append version number to slug to distinguish between versions
+            return uuslug.slugify(self.title + '-' + str(self.version))
+        else:
+            # no version appended means latest version
+            return uuslug.slugify(self.title)
