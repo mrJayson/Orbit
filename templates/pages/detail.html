@@ -33,11 +33,19 @@
                     <i class="fa fa-tag"></i>
                   </button>
                 </a>
-                <a href="{% url 'pages:update' slug=object.slug %}">
-                  <button class="btn btn-md btn-primary">
-                    <i class="fa fa-edit"></i> Update
-                  </button>
-                </a>
+                {% if object.is_removed %}
+                  <a>
+                    <button class="btn btn-sm btn-primary disabled">
+                      <i class="fa fa-edit"></i> Update
+                    </button>
+                  </a>
+                {% else %}
+                  <a href="{% url 'events:update' slug=object.slug %}">
+                    <button class="btn btn-sm btn-primary">
+                      <i class="fa fa-edit"></i> Update
+                    </button>
+                  </a>
+                {% endif %}
               </div>
 
               <div class="clearfix"></div>

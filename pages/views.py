@@ -58,7 +58,7 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
 
     def render_to_response(self, context, **response_kwargs):
         page = Page.objects.get_subclass(pk=self.object.pk)
-        if type(page) == self.model:
+        if type(page) == self.model and not page.is_removed:
             return super(PageUpdateView, self).render_to_response(context, **response_kwargs)
         else:
             return redirect(page, permanent=True)
