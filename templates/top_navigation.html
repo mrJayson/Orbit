@@ -1,71 +1,83 @@
 {% load avatar_tag %}
 <div class="nav_menu">
   <nav>
-    <div class="nav toggle">
-      <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+    <div class="col-xs-1">
+      <div class="nav toggle">
+        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+      </div>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="">
-        <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          <span>{% avatar user 30 %}</span>
-          <span>{{ user.full_name }}</span>
-          <span class="fa fa-angle-down"></span>
-        </a>
-        <ul class="dropdown-menu dropdown-usermenu pull-right">
+    <div class="col-xs-11">
+      <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="{{ user.get_absolute_url }}">
-              <span>Profile</span>
-              <span><i class="fa fa-user pull-right"></i></span>
+            <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span>{% avatar user 30 %}</span>
+              <span>{{ user.full_name }}</span>
+              <span class="fa fa-angle-down"></span>
             </a>
+            <ul class="dropdown-menu dropdown-usermenu pull-right">
+              <li>
+                <a href="{{ user.get_absolute_url }}">
+                  <span>Profile</span>
+                  <span><i class="fa fa-user pull-right"></i></span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span>Messages</span>
+                  <span><i class="fa fa-envelope-o pull-right"></i></span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <span>Settings</span>
+                  <span><i class="fa fa-gear pull-right"></i></span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <span>Help</span>
+                  <span><i class="fa fa-question-circle pull-right"></i></span>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'authentication:signout' %}">
+                  <span>Log Out</span>
+                  <span><i class="fa fa-sign-out pull-right"></i></span>
+                 </a>
+               </li>
+            </ul>
           </li>
           <li>
-            <a>
-              <span>Messages</span>
-              <span><i class="fa fa-envelope-o pull-right"></i></span>
-            </a>
+            <div class="btn-group">
+            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle navbar-btn" type="button" aria-expanded="false">
+              <span>Create </span>
+              <span class="caret"></span>
+            </button>
+            <ul role="menu" class="dropdown-menu">
+              <li>
+                <a href="{% url 'events:create' %}">
+                  <span>Event</span>
+                  <span><i class="fa fa-group pull-right"></i></span>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'pages:create' %}">
+                  <span>Page</span>
+                  <span><i class="fa fa-file-text-o pull-right"></i></span>
+                </a>
+              </li>
+            </ul>
           </li>
-          <li>
-            <a href="javascript:;">
-              <span>Settings</span>
-              <span><i class="fa fa-gear pull-right"></i></span>
-            </a>
+          <li class="col-xs-5 col-sm-9">
+            <div class="top_search input-group">
+              <input class="form-control" placeholder="Search for..." />
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span><i class="fa fa-search"></i></span></button>
+              </span>
+            </div>
           </li>
-          <li>
-            <a href="javascript:;">
-              <span>Help</span>
-              <span><i class="fa fa-question-circle pull-right"></i></span>
-            </a>
-          </li>
-          <li>
-            <a href="{% url 'authentication:signout' %}">
-              <span>Log Out</span>
-              <span><i class="fa fa-sign-out pull-right"></i></span>
-             </a>
-           </li>
-        </ul>
-      </li>
-      <li>
-        <div class="btn-group">
-          <button data-toggle="dropdown" class="btn btn-default dropdown-toggle navbar-btn" type="button" aria-expanded="false">
-            <span>Create </span>
-            <span class="caret"></span>
-          </button>
-          <ul role="menu" class="dropdown-menu">
-            <li>
-              <a href="{% url 'events:create' %}">
-                <span>Event</span>
-                <span><i class="fa fa-group pull-right"></i></span>
-              </a>
-            </li>
-            <li>
-              <a href="{% url 'pages:create' %}">
-                <span>Page</span>
-                <span><i class="fa fa-file-text-o pull-right"></i></span>
-              </a>
-            </li>
-          </ul>
         </div>
-      </li>
-    </ul>
+      </ul>
+    </div>
   </nav>
 </div>
