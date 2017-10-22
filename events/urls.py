@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import EventCreateView, EventDetailView, EventUpdateView, EventIndexView
+from .views import EventCreateView, EventDetailView, EventUpdateView, EventHistoryView, EventIndexView
 
 urlpatterns = [
     url(
@@ -21,5 +21,10 @@ urlpatterns = [
         regex=r'^(?P<slug>[^/]+)/?$',
         view=EventDetailView.as_view(),
         name='detail'
+    ),
+    url(
+        regex=r'^(?P<slug>[^/]+)/history$',
+        view=EventHistoryView.as_view(),
+        name='history'
     ),
 ]

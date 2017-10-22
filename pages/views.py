@@ -38,6 +38,27 @@ class PageCreateView(LoginRequiredMixin, CreateView):
         return reverse('pages:detail', kwargs={'slug': self.object.slug})
 
 
+class PageHistoryView(LoginRequiredMixin, DetailView):
+    template_name = 'pages/history.html'
+    model = Page
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(PageHistoryView, self).get_context_data(*args, **kwargs)
+        context['object_list'] = Page.objects.filter(group_id=self.object.group_id).order_by('creation_date').select_subclasses()
+        return context
+
+
+class PageIndexView(LoginRequiredMixin, ListView):
+    template_name = 'pages/index.html'
+    model = Page
+    queryset = Page.objects.filter(is_removed=False).select_subclasses()  # Refers to the 'All' Tab in the index
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(PageIndexView, self).get_context_data(*args, **kwargs)
+        context['recently_modified'] = Page.objects.filter(is_removed=False).order_by('creation_date').select_subclasses()
+        return context
+
+
 class PageUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'pages/form.html'
     model = Page
@@ -62,14 +83,3 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
             return super(PageUpdateView, self).render_to_response(context, **response_kwargs)
         else:
             return redirect(page, permanent=True)
-
-
-class PageIndexView(LoginRequiredMixin, ListView):
-    template_name = 'pages/index.html'
-    model = Page
-    queryset = Page.objects.filter(is_removed=False).select_subclasses()  # Refers to the 'All' Tab in the index
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(PageIndexView, self).get_context_data(*args, **kwargs)
-        context['recently_modified'] = Page.objects.filter(is_removed=False).order_by('creation_date').select_subclasses()
-        return context

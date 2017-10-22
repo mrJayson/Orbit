@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.views.generic import ListView
 from .forms import EventForm
 from .models import Event
-from pages.views import PageCreateView, PageDetailView, PageUpdateView
+from pages.views import PageCreateView, PageDetailView, PageHistoryView, PageUpdateView
 
 
 class EventCreateView(PageCreateView):
@@ -17,6 +17,10 @@ class EventCreateView(PageCreateView):
 
 class EventDetailView(PageDetailView):
     template_name = 'events/detail.html'
+    model = Event
+
+
+class EventHistoryView(PageHistoryView):
     model = Event
 
 

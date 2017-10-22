@@ -10,20 +10,22 @@
         <table class="table">
           <thead>
             <tr>
-              <th class="col-sm-2 col-xs-3 text-center">
+              <th class="col-xs-3 col-sm-2 text-center">
                 <span>
                   <i class="fa fa-calendar" data-placement="top" data-toggle="tooltip" data-original-title="Date"></i>
                 </span>
               </th>
-              <th class="col-sm-8 col-xs-7">
-                <span>Event</span>
+              <th class="col-xs-7 col-sm-8">
+                <span>
+                  Event
+                </span>
               </th>
-              <th class="col-sm-1 text-center">
+              <th class="col-xs-1 text-center">
                 <span>
                   <i class="fa fa-file-text" data-placement="top" data-toggle="tooltip" data-original-title="Notes"></i>
                 </span>
               </th>
-              <th class="col-sm-1 text-center">
+              <th class="col-xs-1 text-center">
                 <span>
                   <i class="fa fa-user" data-placement="top" data-toggle="tooltip" data-original-title="Attendance"></i>
                 </span>
@@ -34,18 +36,18 @@
             {% for event in object_list %}
               <tr>
                 <td>
-                  <h6 class="text-center" data-placement="left" data-toggle="tooltip" data-original-title="{{ event.end|timediff }}">{{ event.display_date_range }}</h6>
+                  <div class="text-center" data-placement="left" data-toggle="tooltip" data-original-title="{{ event.end|timediff }}">{{ event.display_date_range }}</div>
                 </td>
                 <td>
-                  <h6><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h6>
+                  <div><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
                 </td>
                 <td class="text-center">
-                  <h6>
+                  <div>
                     <i class="fa fa-file-text-o"></i>
-                  </h6>
+                  </div>
                 </td>
                 <td class="text-center">
-                  <h6>1/24</h6>
+                  <div>1/24</div>
                 </td>
               </tr>
             {% endfor %}

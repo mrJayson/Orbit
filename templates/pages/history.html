@@ -1,0 +1,70 @@
+{% extends "base_site.html" %}
+
+{% block title %}{{ object.title }}{% endblock title %}
+
+{% block content %}
+  <div>
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Page History</h3>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-xs-1 text-center">
+                  <span>
+                    <i class="fa fa-history" data-placement="top" data-toggle="tooltip" data-original-title="Version"></i>
+                  </span>
+                </th>
+                <th class="col-xs-7">
+                  <span>
+                    Title
+                  </span>
+                </th>
+                <th class="col-xs-4">
+                  <span>
+                    Changelog
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for page in object_list %}
+                <tr>
+                  <td class="text-center">
+                    <div data-placement="left" data-toggle="tooltip" data-original-title="{{ page.creation_date }}">
+                      {% if object.id == page.id %}
+                        <b>
+                          {{ page.version }}
+                        </b>
+                      {% else %}
+                        {{ page.version }}
+                      {% endif %}
+                    </div>
+                  </td>
+                  <td>
+                    <a href="{{ page.get_absolute_url }}">
+                      {% if object.id == page.id %}
+                        <b>
+                          {{ page.title }}
+                        </b>
+                      {% else %}
+                        {{ page.title }}
+                      {% endif %}
+                    </a>
+                  </td>
+                  <td></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

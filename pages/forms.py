@@ -26,7 +26,6 @@ class PageForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': _("Title goes here..."),
             }),
-
         }
 
     def save(self, commit=True):
@@ -40,6 +39,7 @@ class PageForm(ModelForm):
             existing_page.save()
 
             page.parent = existing_page  # Retain link to previous version
+            page.group_id = existing_page.group_id  # Copy group_id to keep this version in the same group
             page.id = None  # Create a new instance, do not override existing instance
             page.pk = None
             page.version = self.version + 1

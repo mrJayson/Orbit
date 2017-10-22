@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import PageDetailView, PageCreateView, PageUpdateView, PageIndexView
+from .views import PageDetailView, PageCreateView, PageUpdateView, PageHistoryView, PageIndexView
 
 urlpatterns = [
     url(
@@ -22,5 +22,9 @@ urlpatterns = [
         view=PageDetailView.as_view(),
         name='detail'
     ),
-
+    url(
+        regex=r'^(?P<slug>[^/]+)/history$',
+        view=PageHistoryView.as_view(),
+        name='history'
+    ),
 ]

@@ -29,3 +29,6 @@ class Event(Page, TimeFramedModel):
 
     def get_absolute_url(self):
         return reverse('events:detail', kwargs={'slug': self.slug})
+
+    def get_absolute_history_url(self):
+        return reverse('events:history', kwargs={'slug': self.slug})

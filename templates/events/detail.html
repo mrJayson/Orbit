@@ -30,14 +30,14 @@
                 <i class="fa fa-print"></i>
               </button>
             </a>
-            <a href="#">
-              <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Tag">
-                <i class="fa fa-tag"></i>
+            <a href="{{ object.get_absolute_history_url }}">
+              <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="History">
+                <i class="fa fa-history"></i>
               </button>
             </a>
             <a href="#">
-              <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="History">
-                <i class="fa fa-history"></i>
+              <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Tag">
+                <i class="fa fa-tag"></i>
               </button>
             </a>
             {% if object.is_removed %}
@@ -56,7 +56,6 @@
           </div>
           <div class="clearfix"></div>
         </div>
-        
         <div class="x_content">
           {{ object.content | safe }}
         </div>
