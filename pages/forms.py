@@ -20,11 +20,16 @@ class PageForm(ModelForm):
         fields = [
             'title',
             'content',
+            'changelog',
         ]
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': _("Title goes here..."),
+            }),
+            'changelog': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': _("What did you change?"),
             }),
         }
 

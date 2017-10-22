@@ -16,6 +16,7 @@ class Page(SoftDeletableModel):
     creation_date = models.DateTimeField(auto_now_add=True)
     group_id = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
     version = models.IntegerField()
+    changelog = models.CharField(max_length=50, blank=True)
     objects = PageManager()
 
     def get_absolute_url(self):
