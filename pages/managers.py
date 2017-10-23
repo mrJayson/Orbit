@@ -1,6 +1,11 @@
 from django.db import models
-from model_utils.managers import InheritanceManagerMixin, SoftDeletableManagerMixin
+from django.db.models.query import QuerySet
+from model_utils.managers import InheritanceManagerMixin, InheritanceQuerySetMixin, SoftDeletableQuerySetMixin
 
 
-class PageManager(InheritanceManagerMixin, SoftDeletableManagerMixin, models.Manager):
+class PageQuerySet(SoftDeletableQuerySetMixin, InheritanceQuerySetMixin, QuerySet):
     pass
+
+
+class PageManager(InheritanceManagerMixin, models.Manager):
+    _queryset_class = PageQuerySet
