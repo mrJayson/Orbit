@@ -1,3 +1,4 @@
+{% load category_label %}
 {% block tab %}
   <div id="{{ tab_id }}" class="tab-pane fade {% if active %}active in{% endif %}" aria-labelledby="{{ tab_aria_label }}">
     <div class="x_panel">
@@ -15,8 +16,7 @@
             {% for page in list %}
               <tr>
                 <td>
-                  {{ page.category }}
-                  <span class="label label-primary center-block">Meeting</span>
+                  <span class="label {{ page|label }} center-block">{{ page.category }}</span>
                 </td>
                 <td>
                   <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>

@@ -25,6 +25,10 @@ class Page(SoftDeletableModel):
     def get_absolute_history_url(self):
         return reverse('pages:history', kwargs={'slug': self.slug})
 
+    @property
+    def category(self):
+        return self.__class__.__name__
+
     def save(self, *args, **kwargs):
         self.slug = self.slugify()
         super(Page, self).save(*args, **kwargs)
