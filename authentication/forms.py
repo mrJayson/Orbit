@@ -27,6 +27,10 @@ class SignInForm(AuthenticationForm):
         }),
     )
 
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        return username.lower()
+
 
 class SignUpForm(ModelForm):
 
@@ -109,6 +113,18 @@ class SignUpForm(ModelForm):
         }),
     )
 
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        return first_name.capitalize()
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get('last_name')
+        return last_name.capitalize()
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        return username.lower()
+
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
@@ -121,6 +137,10 @@ class SignUpForm(ModelForm):
         password_validation.validate_password(
             self.cleaned_data.get('password2'), self.instance)
         return password2
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        return email.lower()
 
     def save(self, commit=True):
         account = super(SignUpForm, self).save(commit=False)
