@@ -2,7 +2,9 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.views.generic import CreateView
+from django.urls import reverse
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from accounts.models import Account
@@ -18,6 +20,12 @@ class SignInView(LoginView):
         context = super(SignInView, self).get_context_data(*args, **kwargs)
         context['ACCOUNTS_DISABLE_SIGNUP'] = ACCOUNTS_DISABLE_SIGNUP
         return context
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.user.is_authenticated():
+            return redirect(reverse('dashboard:dashboard'), permanent=True)
+        else:
+            return super(SignInView, self).render_to_response(context, **response_kwargs)
 
 
 class SignOutView(LoginRequiredMixin, LogoutView):
@@ -41,3 +49,9 @@ class SignUpView(SuccessMessageMixin, UserPassesTestMixin, CreateView):
     # For this use case, redirect is redundant
     def get_redirect_field_name(self):
         return ''
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.user.is_authenticated():
+            return redirect(reverse('dashboard:dashboard'), permanent=True)
+        else:
+            return super(SignUpView, self).render_to_response(context, **response_kwargs)
