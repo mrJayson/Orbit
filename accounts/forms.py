@@ -18,6 +18,8 @@ class AccountAdminForm(forms.ModelForm):
             'first_name',
             'last_name',
             'email',
+            'location',
+            'education',
             'bio',
             'is_staff',
             'is_active',

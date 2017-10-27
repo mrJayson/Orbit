@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from django.utils.translation import ugettext_lazy as _
 
 
 class Account(AbstractUser):
@@ -13,7 +14,20 @@ class Account(AbstractUser):
     # is_active
     # date_joined
 
-    bio = models.TextField(blank=True)
+    location = models.CharField(
+        max_length=64,
+        blank=True,
+        help_text=_("Which part of Western Sydney are you from?")
+    )
+    education = models.CharField(
+        max_length=64,
+        blank=True,
+        help_text=_("Where are you currently studying?")
+    )
+    bio = models.TextField(
+        blank=True,
+        help_text=_("Tell us a bit about yourself")
+    )
 
     def get_absolute_url(self):
         return reverse('accounts:detail', kwargs={'pk': self.pk})

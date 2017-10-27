@@ -30,15 +30,22 @@
             </div>
             <div>
               <ul class="list-unstyled user_data">
-                <li>
-                  <i class="fa fa-map-marker text-center"></i> Smithfield
-                </li>
-                <li>
-                  <i class="fa fa-graduation-cap text-center"></i> University of New South Wales
-                </li>
+                {% if object.location %}
+                  <li>
+                    <span><i class="fa fa-map-marker text-center"></i></span>
+                    <span>{{ object.location }}</span>
+                  </li>
+                {% endif %}
+                {% if object.education %}
+                  <li>
+                    <span><i class="fa fa-graduation-cap text-center"></i></span>
+                    <span>{{ object.education }}</span>
+                  </li>
+                {% endif %}
                 {% if object.bio %}
                   <li>
-                    <i class="fa fa-info-circle text-center"></i>{{ object.bio }}
+                    <span><i class="fa fa-info-circle text-center"></i></span>
+                    <span>{{ object.bio }}</span>
                   </li>
                 {% endif %}
               </ul>
