@@ -36,9 +36,11 @@
                 <li>
                   <i class="fa fa-graduation-cap text-center"></i> University of New South Wales
                 </li>
-                <li>
-                  <i class="fa fa-info-circle text-center"></i>{{ object.bio }}
-                </li>
+                {% if object.bio %}
+                  <li>
+                    <i class="fa fa-info-circle text-center"></i>{{ object.bio }}
+                  </li>
+                {% endif %}
               </ul>
             </div>
           </div>
