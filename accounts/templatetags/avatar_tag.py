@@ -32,6 +32,9 @@ def avatar(user, size=settings.AVATAR_DEFAULT_SIZE, **kwargs):
             letter = user.first_name[0].upper()
             if user.last_name:
                 letter += user.last_name[0].upper()
+        elif user.username:
+            letter = user.username[0].upper()
+
         colour_ix = int(hashlib.md5(str(user.id).encode()).hexdigest(), 16) % NUM_COLOURS
         context = {'colour_ix': colour_ix, 'letter': letter, 'size': size, 'font_size': (size / 2)}
         return render_to_string('accounts/dynamic_avatar.svg', context)
