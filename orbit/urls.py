@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.shortcuts import render
 from avatar import urls as avatar
 
 local_patterns = [
@@ -31,3 +32,10 @@ third_party_patterns = [
 ]
 
 urlpatterns = local_patterns + third_party_patterns
+
+
+def fourohfour(request):
+    return render(request, '404.html', status=404)
+
+
+handler404 = fourohfour

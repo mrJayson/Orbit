@@ -1,0 +1,21 @@
+{% extends "base_site.html" %}
+
+{% block title %}Page Not Found{% endblock title %}
+
+{% block body %}
+  <div class="">
+    <div class="row">
+      <div class="jumbotron">
+        <div class="text-center">
+          <h1><i class="fa fa-frown-o fa-3x"></i></h1>
+          <br/>
+          <h1>404</h1>
+          <h3>Page not found</h3>
+          <h6>The page you are looking for does not exist or an error occurred.</h6>
+          <br/>
+          <a href="{% url 'dashboard:dashboard' %}"><button class="btn btn-default">Go Home</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}
