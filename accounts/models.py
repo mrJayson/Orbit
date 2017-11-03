@@ -35,7 +35,7 @@ class Account(AbstractUser):
 
     @property
     def full_name(self):
-        return self.first_name + ' ' + self.last_name
+        return (self.first_name + ' ' + self.last_name).strip()
 
     def save(self, *args, **kwargs):
         super(Account, self).save(*args, **kwargs)
