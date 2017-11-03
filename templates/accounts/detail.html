@@ -1,10 +1,12 @@
 {% extends "base_site.html" %}
 {% load avatar_tag %}
+{% load guardian_tags %}
 {% load static %}
 
 {% block title %}{{ object.full_name }}{% endblock title %}
 
 {% block content %}
+  {% get_obj_perms request.user for object as "permissions" %}
   <div>
     <div class="page-title">
       <div class="title_left">
@@ -12,11 +14,13 @@
       </div>
       <div class="title_right">
         <div class="btn-group pull-right ">
-          <a href="">
-            <button class="btn btn-sm btn-primary">
-              <i class="fa fa-edit"></i> Update Profile
-            </button>
-          </a>
+          {% if "change_account" in permissions %}
+            <a href="">
+              <button class="btn btn-sm btn-primary">
+                <i class="fa fa-edit"></i> Update Profile
+              </button>
+            </a>
+          {% endif %}
         </div>
       </div>
     </div>

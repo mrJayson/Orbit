@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+from guardian.shortcuts import assign_perm
 
 
 class Account(AbstractUser):
@@ -35,3 +36,8 @@ class Account(AbstractUser):
     @property
     def full_name(self):
         return self.first_name + ' ' + self.last_name
+
+    def save(self, *args, **kwargs):
+        super(Account, self).save(*args, **kwargs)
+        # Give permission to self to edit own profile
+        assign_perm('change_account', self, self)

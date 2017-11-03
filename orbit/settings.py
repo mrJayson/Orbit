@@ -45,6 +45,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'avatar',
     'ckeditor',
+    'guardian',
 ]
 
 LOCAL_APPS = [
@@ -130,6 +131,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'accounts.Account'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # this is default
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 # Any authentication required pages will redirect here to authenticate
 LOGIN_URL = 'authentication:signin'
