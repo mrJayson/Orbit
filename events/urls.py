@@ -1,7 +1,19 @@
 from django.conf.urls import url
-from .views import EventCreateView, EventDetailView, EventUpdateView, EventHistoryView, EventIndexView
+from .views import (
+    EventCalendarView,
+    EventCreateView,
+    EventDetailView,
+    EventUpdateView,
+    EventHistoryView,
+    EventIndexView
+)
 
 urlpatterns = [
+    url(
+        regex=r'^calendar/?$',
+        view=EventCalendarView.as_view(),
+        name='calendar'
+    ),
     url(
         regex=r'^create/?$',
         view=EventCreateView.as_view(),

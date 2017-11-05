@@ -1,9 +1,18 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from .forms import EventForm
 from .models import Event
 from pages.views import PageCreateView, PageDetailView, PageHistoryView, PageUpdateView
+
+
+class EventCalendarView(LoginRequiredMixin, TemplateView):
+    template_name = 'events/calendar.html'
+    model = Event
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(EventCalendarView, self).get_context_data(*args, **kwargs)
+        return context
 
 
 class EventCreateView(PageCreateView):
