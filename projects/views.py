@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+from .models import Project
 
-# Create your views here.
+
+class ProjectIndexView(LoginRequiredMixin, ListView):
+    template_name = 'projects/index.html'
+    model = Project

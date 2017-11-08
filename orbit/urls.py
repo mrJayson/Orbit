@@ -25,6 +25,7 @@ local_patterns = [
     url(r'^', include('dashboard.urls', namespace='dashboard')),
     url(r'^event/', include('events.urls', namespace='events')),
     url(r'^page/', include('pages.urls', namespace='pages')),
+    url(r'^project/', include('projects.urls', namespace='projects')),
 ]
 
 third_party_patterns = [
