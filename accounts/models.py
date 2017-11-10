@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Permission
+from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from guardian.shortcuts import assign_perm
@@ -40,4 +41,7 @@ class Account(AbstractUser):
     def save(self, *args, **kwargs):
         super(Account, self).save(*args, **kwargs)
         # Give permission to self to edit own profile
-        assign_perm('change_account', self, self)
+        content_type = ContentType.objects.get_for_model(self)
+        edit_perm, created = Permission.objects.get_or_create(codename='change_account', content_type=content_type)
+        if created:
+            assign_perm(edit_perm, self, self)

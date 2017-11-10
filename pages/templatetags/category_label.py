@@ -1,6 +1,7 @@
 from django import template
 from events.models import Event
 from pages.models import Page
+from projects.models import Project
 
 register = template.Library()
 
@@ -11,5 +12,7 @@ def category_label(page):
         return "label-warning"
     if type(page) == Page:
         return "label-primary"
+    if type(page) == Project:
+        return "label-danger"
     else:
         return "label-default"

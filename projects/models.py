@@ -1,6 +1,10 @@
 from django.db import models
+from django.urls import reverse
+from pages.models import Page
 
 
-class Project(models.Model):
-    title = models.CharField(max_length=128)
-    description = models.TextField()
+class Project(Page):
+
+    def get_absolute_url(self):
+        return reverse('projects:detail', kwargs={'slug': self.slug})
+
