@@ -28,8 +28,8 @@ class PageCreateView(LoginRequiredMixin, CreateView):
             form_class = self.get_form_class()
 
         if (self.request.method == 'POST'):
-            # pass in the author here
-            form = form_class(data=self.request.POST, author=self.request.user)
+            # pass in the creator here
+            form = form_class(data=self.request.POST, creator=self.request.user)
         else:
             form = form_class()
         return form
@@ -69,7 +69,7 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
             form_class = self.get_form_class()
 
         if (self.request.method == 'POST'):
-            form = form_class(author=self.request.user, version=self.object.version, **self.get_form_kwargs())
+            form = form_class(creator=self.request.user, version=self.object.version, **self.get_form_kwargs())
         else:
             form = super(PageUpdateView, self).get_form(form_class)
         return form

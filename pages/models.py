@@ -12,7 +12,7 @@ class Page(SoftDeletableModel):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, unique=True)
     content = RichTextField(blank=True)
-    author = models.ForeignKey(Account)
+    creator = models.ForeignKey(Account)
     creation_date = models.DateTimeField(auto_now_add=True)
     group_id = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
     version = models.IntegerField()

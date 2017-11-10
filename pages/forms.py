@@ -10,8 +10,8 @@ class PageForm(ModelForm):
         'password_mismatch': _("The two password fields do not match")
     }
 
-    def __init__(self, author=None, version=None, *args, **kwargs):
-        self.author = author
+    def __init__(self, creator=None, version=None, *args, **kwargs):
+        self.creator = creator
         self.version = version
         super(PageForm, self).__init__(*args, **kwargs)
 
@@ -35,7 +35,7 @@ class PageForm(ModelForm):
 
     def save(self, commit=True):
         page = super(PageForm, self).save(commit=False)
-        page.author = self.author
+        page.creator = self.creator
         if self.version is None:
             page.version = 1
         else:
