@@ -9,6 +9,7 @@ from .models import Project
 class ProjectIndexView(LoginRequiredMixin, ListView):
     template_name = 'projects/index.html'
     model = Project
+    queryset = Project.objects.filter(is_removed=False)
 
 
 class ProjectDetailView(PageDetailView):
