@@ -53,6 +53,20 @@ var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
     $NAV_MENU = $('.nav_menu'),
     $FOOTER = $('footer');
 
+// Collapse
+$(document).ready(function() {
+    $("[data-toggle='collapse']").each(function() {
+        var $id = $(this).attr('data-target');
+        var $icon = $(this).find("i[class^='fa fa-chevron']");
+        $($id).on('hidden.bs.collapse', function() {
+            $icon.removeClass('fa fa-chevron-up').addClass('fa fa-chevron-down');
+        });
+        $($id).on('shown.bs.collapse', function() {
+            $icon.removeClass('fa fa-chevron-down').addClass('fa fa-chevron-up');
+        });
+    });
+});
+// /Collapse
 
 // Sidebar
 function init_sidebar() {
