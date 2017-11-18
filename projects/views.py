@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from pages.views import PageCreateView, PageDetailView
 from .forms import ProjectForm
 from .models import Project
@@ -14,6 +14,11 @@ class ProjectIndexView(LoginRequiredMixin, ListView):
 
 class ProjectDetailView(PageDetailView):
     template_name = 'projects/detail.html'
+    model = Project
+
+
+class ProjectBoardView(LoginRequiredMixin, DetailView):
+    template_name = 'projects/board.html'
     model = Project
 
 

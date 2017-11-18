@@ -25,7 +25,7 @@ urlpatterns = [
         name='index'
     ),
     url(
-        regex=r'^(?P<slug>[^/]+)/update$',
+        regex=r'^(?P<slug>[^/]+)/update/?$',
         view=EventUpdateView.as_view(),
         name='update'
     ),
@@ -35,7 +35,7 @@ urlpatterns = [
         name='detail'
     ),
     url(
-        regex=r'^(?P<slug>[^/]+)/history$',
+        regex=r'^(?P<slug>[^/]+)/history/?$',
         view=EventHistoryView.as_view(),
         name='history'
     ),

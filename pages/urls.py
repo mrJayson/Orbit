@@ -13,7 +13,7 @@ urlpatterns = [
         name='index'
     ),
     url(
-        regex=r'^(?P<slug>[^/]+)/update$',
+        regex=r'^(?P<slug>[^/]+)/update/?$',
         view=PageUpdateView.as_view(),
         name='update'
     ),
@@ -23,7 +23,7 @@ urlpatterns = [
         name='detail'
     ),
     url(
-        regex=r'^(?P<slug>[^/]+)/history$',
+        regex=r'^(?P<slug>[^/]+)/history/?$',
         view=PageHistoryView.as_view(),
         name='history'
     ),

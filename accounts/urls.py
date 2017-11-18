@@ -9,7 +9,7 @@ urlpatterns = [
         name='detail'
     ),
     url(
-        regex=r'^(?P<pk>[^/]+)/edit$',
+        regex=r'^(?P<pk>[^/]+)/edit/?$',
         view=AccountUpdateView.as_view(),
         name='edit'
     ),
