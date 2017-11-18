@@ -4,6 +4,7 @@ from .views import (
     ProjectCreateView,
     ProjectDetailView,
     ProjectIndexView,
+    ProjectUpdateView,
 )
 
 urlpatterns = [
@@ -21,6 +22,11 @@ urlpatterns = [
         regex=r'^(?P<slug>[^/]+)/board/?$',
         view=ProjectBoardView.as_view(),
         name='board'
+    ),
+    url(
+        regex=r'^(?P<slug>[^/]+)/update/?$',
+        view=ProjectUpdateView.as_view(),
+        name='update'
     ),
     url(
         regex=r'^(?P<slug>[^/]+)/?$',

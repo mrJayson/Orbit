@@ -18,13 +18,13 @@ urlpatterns = [
         name='update'
     ),
     url(
-        regex=r'^(?P<slug>[^/]+)/?$',
-        view=PageDetailView.as_view(),
-        name='detail'
-    ),
-    url(
         regex=r'^(?P<slug>[^/]+)/history/?$',
         view=PageHistoryView.as_view(),
         name='history'
+    ),
+    url(
+        regex=r'^(?P<slug>[^/]+)/?$',
+        view=PageDetailView.as_view(),
+        name='detail'
     ),
 ]

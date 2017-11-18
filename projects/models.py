@@ -9,3 +9,6 @@ class Project(Page):
 
     def get_absolute_url(self):
         return reverse('projects:detail', kwargs={'slug': self.slug})
+
+    def get_absolute_board_url(self):
+        return reverse('projects:board', kwargs={'slug': self.slug})

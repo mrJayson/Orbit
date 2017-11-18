@@ -3,61 +3,53 @@
 {% block title %}{{ object.title }}{% endblock title %}
 
 {% block content %}
-  <div>
-    <div class="page-title">
-      <div class="title_left">
-        <h3></h3>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-          <div class="x_title">
-            <h2>
-              {{ object.title }}
-            </h2>
-            <div class="btn-group pull-right">
-              <a href="#">
-                <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Trash">
-                  <i class="fa fa-trash"></i>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>
+            {{ object.title }}
+          </h2>
+          <div class="btn-group pull-right">
+            <a href="#">
+              <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Trash">
+                <i class="fa fa-trash"></i>
+              </button>
+            </a>
+            <a href="#">
+              <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Print">
+                <i class="fa fa-print"></i>
+              </button>
+            </a>
+            <a href="{{ object.get_absolute_history_url }}">
+              <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="History">
+                <i class="fa fa-history"></i>
+              </button>
+            </a>
+            <a href="#">
+              <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Tag">
+                <i class="fa fa-tag"></i>
+              </button>
+            </a>
+            {% if object.is_removed %}
+              <a>
+                <button class="btn btn-sm btn-primary disabled">
+                  <i class="fa fa-edit"></i> Update
                 </button>
               </a>
-              <a href="#">
-                <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Print">
-                  <i class="fa fa-print"></i>
+            {% else %}
+              <a href="{% url 'pages:update' slug=object.slug %}">
+                <button class="btn btn-sm btn-primary">
+                  <i class="fa fa-edit"></i> Update
                 </button>
               </a>
-              <a href="{{ object.get_absolute_history_url }}">
-                <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="History">
-                  <i class="fa fa-history"></i>
-                </button>
-              </a>
-              <a href="#">
-                <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-toggle="tooltip" data-original-title="Tag">
-                  <i class="fa fa-tag"></i>
-                </button>
-              </a>
-              {% if object.is_removed %}
-                <a>
-                  <button class="btn btn-sm btn-primary disabled">
-                    <i class="fa fa-edit"></i> Update
-                  </button>
-                </a>
-              {% else %}
-                <a href="{% url 'pages:update' slug=object.slug %}">
-                  <button class="btn btn-sm btn-primary">
-                    <i class="fa fa-edit"></i> Update
-                  </button>
-                </a>
-              {% endif %}
-            </div>
+            {% endif %}
+          </div>
 
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content">
-            {{ object.content | safe }}
-          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          {{ object.content | safe }}
         </div>
       </div>
     </div>

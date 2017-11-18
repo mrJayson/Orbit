@@ -9,10 +9,10 @@ register = template.Library()
 @register.filter(name="label", is_safe=False)
 def category_label(page):
     if type(page) == Event:
-        return "label-warning"
+        return "label-danger"
     if type(page) == Page:
         return "label-primary"
     if type(page) == Project:
-        return "label-danger"
+        return "label-warning"
     else:
         return "label-default"

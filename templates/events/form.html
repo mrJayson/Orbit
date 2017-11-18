@@ -1,7 +1,13 @@
 {% extends "base_site.html" %}
 {% load static %}
 
-{% block title %}New Event{% endblock %}
+{% block title %}
+  {% if form.instance.id %}
+    Edit Event
+  {% else %}
+    New Event
+  {% endif %}
+{% endblock %}
 
 {% block stylesheets %}
   {{ block.super }}
