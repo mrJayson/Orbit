@@ -23,18 +23,12 @@
           </div>
         </div>
         <div class="panel-body collapse in" id="collapse-to-do">
-          <div class="panel panel-success">
-            <div class="panel-heading">heading</div>
-            <div class="panel-body">
-              asdf
+          {% for task in to_do %}
+            <div class="panel panel-default">
+              <div class="panel-heading">{{ task.title }}</div>
+              <div class="panel-body">asdf</div>
             </div>
-          </div>
-          <div class="panel panel-success">
-            <div class="panel-heading">heading</div>
-            <div class="panel-body">
-              asdf
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -49,12 +43,12 @@
           </div>
         </div>
         <div class="panel-body collapse in" id="collapse-in-progress">
-          <div class="panel panel-success">
-            <div class="panel-heading">heading</div>
-            <div class="panel-body">
-              asdf
+          {% for task in in_progress %}
+            <div class="panel panel-default">
+              <div class="panel-heading">{{ task.title }}</div>
+              <div class="panel-body">asdf</div>
             </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -69,12 +63,12 @@
           </div>
         </div>
         <div class="panel-body collapse in" id="collapse-completed">
-          <div class="panel panel-success">
-            <div class="panel-heading">heading</div>
-            <div class="panel-body">
-              asdf
+          {% for task in completed %}
+            <div class="panel panel-default">
+              <div class="panel-heading">{{ task.title }}</div>
+              <div class="panel-body">asdf</div>
             </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>

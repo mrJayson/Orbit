@@ -3,12 +3,19 @@ from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from pages.views import PageCreateView, PageDetailView, PageUpdateView
 from .forms import ProjectForm
-from .models import Project
+from .models import Project, Task
 
 
 class ProjectBoardView(LoginRequiredMixin, DetailView):
     template_name = 'projects/board.html'
     model = Project
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProjectBoardView, self).get_context_data(*args, **kwargs)
+        context['to_do'] = Task.objects.filter(project=self.object, column=Project.to_do)
+        context['in_progress'] = Task.objects.filter(project=self.object, column=Project.in_progress)
+        context['completed'] = Task.objects.filter(project=self.object, column=Project.completed)
+        return context
 
 
 class ProjectCreateView(PageCreateView):
