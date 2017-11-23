@@ -10,9 +10,9 @@ class PageForm(ModelForm):
         'password_mismatch': _("The two password fields do not match")
     }
 
-    def __init__(self, creator=None, version=None, *args, **kwargs):
-        self.creator = creator
-        self.version = version
+    def __init__(self, *args, **kwargs):
+        self.creator = kwargs.pop('creator', None)
+        self.version = kwargs.pop('version', None)
         super(PageForm, self).__init__(*args, **kwargs)
 
     class Meta:

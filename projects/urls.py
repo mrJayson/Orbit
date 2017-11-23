@@ -5,6 +5,8 @@ from .views import (
     ProjectDetailView,
     ProjectIndexView,
     ProjectUpdateView,
+    TaskCreateView,
+    TaskDetailView,
 )
 
 urlpatterns = [
@@ -17,6 +19,16 @@ urlpatterns = [
         regex=r'^index/?$',
         view=ProjectIndexView.as_view(),
         name='index'
+    ),
+    url(
+        regex=r'^(?P<slug>[^/]+)/task/create/?$',
+        view=TaskCreateView.as_view(),
+        name='task_create'
+    ),
+    url(
+        regex=r'^(?P<project_slug>[^/]+)/task/(?P<task_slug>[^/]+)/?$',
+        view=TaskDetailView.as_view(),
+        name='task_detail'
     ),
     url(
         regex=r'^(?P<slug>[^/]+)/board/?$',

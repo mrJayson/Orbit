@@ -28,11 +28,15 @@ class PageCreateView(LoginRequiredMixin, CreateView):
             form_class = self.get_form_class()
 
         if (self.request.method == 'POST'):
-            # pass in the creator here
-            form = form_class(data=self.request.POST, creator=self.request.user)
+            form = form_class(**self.get_form_kwargs())
         else:
             form = form_class()
         return form
+
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super(PageCreateView, self).get_form_kwargs()
+        kwargs['creator'] = self.request.user
+        return kwargs
 
     def get_success_url(self, **kwargs):
         return reverse('pages:detail', kwargs={'slug': self.object.slug})
@@ -42,7 +46,7 @@ class PageHistoryView(LoginRequiredMixin, DetailView):
     template_name = 'pages/history.html'
     model = Page
 
-    def get_context_data(self, *args, **kwargs):
+    def get_context_data(self):
         context = super(PageHistoryView, self).get_context_data(*args, **kwargs)
         context['object_list'] = Page.objects.filter(group_id=self.object.group_id).order_by('creation_date').select_subclasses()
         return context
@@ -69,10 +73,16 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
             form_class = self.get_form_class()
 
         if (self.request.method == 'POST'):
-            form = form_class(creator=self.request.user, version=self.object.version, **self.get_form_kwargs())
+            form = form_class(**self.get_form_kwargs())
         else:
             form = super(PageUpdateView, self).get_form(form_class)
         return form
+
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super(PageUpdateView, self).get_form_kwargs()
+        kwargs['creator'] = self.request.user
+        kwargs['version'] = self.object.version
+        return kwargs
 
     def get_success_url(self, **kwargs):
         return reverse('pages:detail', kwargs={'slug': self.object.slug})

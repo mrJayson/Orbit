@@ -4,13 +4,22 @@
 
 {% block content %}
   <div class="container">
-    <div class="col-xs-12">
+    <div class="col-sm-6 col-xs-12">
       <a href="{{ object.get_absolute_url }}">
         <button class="btn btn-sm btn-default">
           <span><i class="fa fa-caret-left"></i></span>
           <span>Back To Project Overview</span>
         </button>
       </a>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <div class="pull-right">
+        <a href="{% url 'projects:task_create' slug=object.slug %}">
+          <button class="btn btn-sm btn-default">
+            <span>New Task</span>
+          </button>
+        </a>
+      </div>
     </div>
     <div class="col-sm-4 col-xs-12">
       <div class="panel panel-default">
@@ -24,10 +33,12 @@
         </div>
         <div class="panel-body collapse in" id="collapse-to-do">
           {% for task in to_do %}
-            <div class="panel panel-default">
-              <div class="panel-heading">{{ task.title }}</div>
-              <div class="panel-body">asdf</div>
-            </div>
+            <a href="{{ task.get_absolute_url }}">
+              <div class="panel panel-default">
+                <div class="panel-heading">{{ task.title }}</div>
+                <div class="panel-body">asdf</div>
+              </div>
+            </a>
           {% endfor %}
         </div>
       </div>
@@ -44,10 +55,12 @@
         </div>
         <div class="panel-body collapse in" id="collapse-in-progress">
           {% for task in in_progress %}
-            <div class="panel panel-default">
-              <div class="panel-heading">{{ task.title }}</div>
-              <div class="panel-body">asdf</div>
-            </div>
+            <a href="{{ task.get_absolute_url }}">
+              <div class="panel panel-default">
+                <div class="panel-heading">{{ task.title }}</div>
+                <div class="panel-body">asdf</div>
+              </div>
+            </a>
           {% endfor %}
         </div>
       </div>
@@ -64,10 +77,12 @@
         </div>
         <div class="panel-body collapse in" id="collapse-completed">
           {% for task in completed %}
-            <div class="panel panel-default">
-              <div class="panel-heading">{{ task.title }}</div>
-              <div class="panel-body">asdf</div>
-            </div>
+            <a href="{{ task.get_absolute_url }}">
+              <div class="panel panel-default">
+                <div class="panel-heading">{{ task.title }}</div>
+                <div class="panel-body">asdf</div>
+              </div>
+            </a>
           {% endfor %}
         </div>
       </div>
