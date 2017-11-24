@@ -26,6 +26,10 @@ class Project(Page):
 class Task(Page):
     task_project = models.ForeignKey(Project)
     column = models.CharField(max_length=1, choices=Project.columns, default=0)
+    code = models.PositiveSmallIntegerField(unique=True)
+
+    class Meta:
+        unique_together = ('task_project', 'code')
 
     def get_absolute_url(self):
         project_slug = self.task_project.slug
