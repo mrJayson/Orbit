@@ -7,7 +7,7 @@ django-annoying==0.10.3
 django-appconf==1.0.2
 django-avatar==4.0.1
 django-ckeditor==5.3.0
-django-debug-toolbar==1.8
+django-debug-toolbar==1.11.1
 django-extensions==1.9.1
 django-guardian==1.4.9
 django-js-asset==0.1.1
